@@ -1,9 +1,9 @@
 {
    "scripts": {
-      "init-api": "cd ./TwitterCloneApi; npm install",
-      "start-api": "cd ./TwitterCloneApi; npm run dev",
+      "init-api": "cd ./TwitterCloneApi && npm install",
+      "start-api": "cd ./TwitterCloneApi && npm run dev",
 
-      "init-ui": "cd ./TwitterCloneUi; npm install",
-      "start-ui": "cd ./TwitterCloneUi; npm run dev"
+      "init-ui": "cd ./TwitterCloneUi && npm install",
+      "start-ui": "cd ./TwitterCloneUi && npm run dev"
    }
 }

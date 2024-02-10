@@ -1,6 +1,16 @@
 import jwt from "jsonwebtoken";
+import FileDao from "../repositories/FileDao.js";
 
-const users = [];
+const FILE_NAME = "AUTH";
+const users = deserialize() ?? [];
+
+function serialize() {
+  FileDao.saveData(FILE_NAME, users);
+}
+
+function deserialize() {
+  return FileDao.retrieveData(FILE_NAME);
+}
 
 function registerUser(username, password) {
   const user = {
@@ -8,6 +18,7 @@ function registerUser(username, password) {
     password,
   };
   users.push(user);
+  serialize();
   return user;
 }
 

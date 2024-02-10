@@ -1,6 +1,16 @@
 import DataAccessError from "./DataAccessError.js";
+import FileDao from "./FileDao.js";
 
-const users = {};
+const FILE_NAME = "USERS";
+const users = deserialize() ?? {};
+
+function serialize() {
+  FileDao.saveData(FILE_NAME, users);
+}
+
+function deserialize() {
+  return FileDao.retrieveData(FILE_NAME);
+}
 
 function createUser(username) {
   if (isExistingUser(username)) {
@@ -13,6 +23,7 @@ function createUser(username) {
     following: [],
   };
   users[username] = user;
+  serialize();
   return user;
 }
 
@@ -31,6 +42,7 @@ function followUser(usernameOfFollower, usernameToFollow) {
   }
 
   user.following.push(usernameToFollow);
+  serialize();
   return user;
 }
 
@@ -43,6 +55,7 @@ function unfollowUser(usernameOfFollower, usernameToUnfollow) {
   user.following = user.following.filter(
     (username) => username !== usernameToUnfollow
   );
+  serialize();
   return user;
 }
 

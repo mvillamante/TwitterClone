@@ -1,7 +1,17 @@
 import { nanoid } from "nanoid";
 import DataAccessError from "./DataAccessError.js";
+import FileDao from "./FileDao.js";
 
-const postsPerUser = {};
+const FILE_NAME = "POSTS";
+const postsPerUser = deserialize() ?? {};
+
+function serialize() {
+  FileDao.saveData(FILE_NAME, postsPerUser);
+}
+
+function deserialize() {
+  return FileDao.retrieveData(FILE_NAME);
+}
 
 function createPost(username, post, dateTimePosted) {
   if (postsPerUser[username] === undefined) {
@@ -17,6 +27,7 @@ function createPost(username, post, dateTimePosted) {
   };
 
   postsPerUser[username].push(createdPost);
+  serialize();
   return createdPost;
 }
 
@@ -59,6 +70,7 @@ function likePost(username, postId) {
   }
   post.likes.push(username);
   console.log(post);
+  serialize();
   return post;
 }
 
@@ -71,11 +83,13 @@ function unlikePost(username, postId) {
     return post;
   }
   post.likes = post.likes.filter((like) => like !== username);
+  serialize();
   return post;
 }
 
 function initializePosts(username) {
   postsPerUser[username] = [];
+  serialize();
 }
 
 export default {
