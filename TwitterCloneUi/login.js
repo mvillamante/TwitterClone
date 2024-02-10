@@ -55,7 +55,7 @@ bullets.forEach((bullet) => {
 
 
 async function helloWorld() {
-    const res = await fetch("http://localhost:3000/")
+    const res = await fetch("http://localhost:3000/api")
     const text = await res.text()
     console.log(text);
 }
