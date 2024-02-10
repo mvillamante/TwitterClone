@@ -20,45 +20,60 @@
           <img src="img/logo_light.png" alt="vespera">
           <a href="index.html"><h2>VESPERA</h2></a>
         </div>
-        <div class="close" id="close-btn">
-          <i class="fa fa-close"></i>
-        </div>
       </div>
       <div class="nav-container">
-          <a href="#" class="nav-btn">
-            <i class="fa fa-home"></i>
-            <h3>Home</h3>
-          </a>
-          <a href="#" class="nav-btn">
-            <i class="fa fa-search"></i>
-            <h3>Explore</h3>
-          </a>
-          <a href="profile.html" class="nav-btn">
-            <i class="fa fa-user-o"></i>
-            <h3>Profile</h3>
-          </a>
-          <a href="#">
-            <!--<i class="fa fa-user-o" style="font-size:36px"></i>-->
-            <button class="post-btn"><h3>POST</h3></button>
-          </a>
-          <div class="nav-user">
-            <i class="fa fa-user-circle" style="font-size:30px"></i>
-            <h3>User</h3>
+        <ul>
+          <li class="navlist active">
+            <b></b>
+            <b></b>
+            <a href="#" class="nav-btn">
+              <i class="fa fa-home"></i>
+              <h3>Home</h3>
+            </a>
+          </li>
+          <li class="navlist">
+            <b></b>
+            <b></b>
+            <a href="#" class="nav-btn">
+              <i class="fa fa-user"></i>
+              <h3>Profile</h3>
+            </a>            
+          </li>
+        </ul>
+        <a href="#" class="nav-btn">
+          <div class="outer-btn">
+            <div class="inner-btn"></div>
+            <button class="post-btn">
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+              <h3>post</h3>
+            </button>
           </div>
+        </a>
+        <div class="nav-user-container">
+          <div class="nav-user">
+            <img src="./assets/img/user_pfp.png">
+            <div class="nav-usertxt">
+              <h4>Wade Warren</h4>
+            </div>
+            <i class="fa fa-ellipsis-h"></i>
+          </div>
+        </div>
       </div>
+      <div class="user-popup">
+        <h4>Add an existing account</h4>
+        <h4>Log out </h4>
+      </div>
+      <div class="triangle"></div>
     </nav>
     <!----------------------CONTENT(middle) SECTION--------------------->
     <main class="homepage-main">
-      <div class="feed-tab">
-        <h4>For You</h4>
-        <h4>Following</h4>
-      </div>
       <div class="content-container">
         <div class="feed-container">
           <div class="post-container">
             <div class="content-post">
               <!----<img alt="user-img">---->
-              <i class="fa fa-user-circle" id="placeholder-user"><span id="username">User</span></i> <!--Remove this placeholder for User to apply actual user profile-->
+              <!--<i class="fa fa-user-circle" id="placeholder-user"><span id="username">User</span></i>-->
+              <img alt="user-img"><span id="username">User</span>
               <textarea name="user-post" id="userPost" placeholder="What's on your mind?" cols="30" rows="5" maxlength="180" oninput="checkInput()" onclick="enablePostButton()"></textarea>
             </div>
             <div class="btn-container">
@@ -68,10 +83,27 @@
               <button><i class="fa fa-smile-o"></i></button>
               <button><i class="fa fa-calendar"></i></button>
               <button><i class="fa fa-map-marker"></i></button>
+              <div class="outer-btn">
+                <div class="inner-btn"></div>
+                <button class="post-btn" id="postbtn" onclick="postTweet()" disabled>
+                  Post
+                </button>
+              </div>
             </div>
-              <button class="btn-container-post" id="post" onclick="postTweet()" disabled>Post</button>
           </div>
-          <div id="post-container"></div> 
+          <div class="post-container">
+            <div class="content-post">
+              <img alt="user-img"><span id="username">User</span>
+              <div class="user-text unpost">lorem ipsum dolor sit amet</div>
+            </div>
+            <div class="btn-container">
+              <button><i class="fa fa-comment" aria-hidden="true"></i></button>
+              <button><i class="fa fa-retweet" aria-hidden="true"></i></button>
+              <button><i class="fa fa-heart"></i></button>
+              <button><i class="fa fa-share-alt"></i></button>
+              <button></button>
+            </div>
+          </div>
         </div>
       </div>
       
@@ -80,11 +112,16 @@
     <div class="sidecontent-container">
       <div class="search-container">
         <!--search-icon-->
+        <i class="fa fa-search"></i>
         <!--textbox cguro-->
+        <input type="text" placeholder="Search">
       </div>
       <div class="tofollow-container">
         <h3>Who to Follow</h3>
-        <div class="tofollow-user"></div>
+        <div class="tofollow-user">
+          <img src="">
+          
+        </div>
       </div>
       <div class="trend-container">
         <h3>Trends for you</h3>
@@ -93,7 +130,7 @@
     </div>
   </div>
 
-  <script src="login.js"></script>
+  <script src="home.js"></script>
 
 </body>
 </html>
