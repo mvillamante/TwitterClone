@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!--=============== CSS ===============-->
+  <link rel="stylesheet" href="styles.css" />
+  <title>Vespera</title>
+</head>
+
+<body class="homepage-body">
+  <!--==================== MAIN ====================-->
+  <div class="home-container">
+    <!----------------------NAVIGATION BAR--------------------->
+    <nav>
+      <div class="top">
+        <div class="home-logo">
+          <img src="img/logo_light.png" alt="vespera">
+          <a href="index.html"><h2>VESPERA</h2></a>
+        </div>
+        <div class="close" id="close-btn">
+          <i class="fa fa-close"></i>
+        </div>
+      </div>
+      <div class="nav-container">
+          <a href="#" class="nav-btn">
+            <i class="fa fa-home"></i>
+            <h3>Home</h3>
+          </a>
+          <a href="#" class="nav-btn">
+            <i class="fa fa-search"></i>
+            <h3>Explore</h3>
+          </a>
+          <a href="profile.html" class="nav-btn">
+            <i class="fa fa-user-o"></i>
+            <h3>Profile</h3>
+          </a>
+          <a href="#">
+            <!--<i class="fa fa-user-o" style="font-size:36px"></i>-->
+            <button class="post-btn"><h3>POST</h3></button>
+          </a>
+          <div class="nav-user">
+            <i class="fa fa-user-circle" style="font-size:30px"></i>
+            <h3>User</h3>
+          </div>
+      </div>
+    </nav>
+    <!----------------------CONTENT(middle) SECTION--------------------->
+    <main class="homepage-main">
+      <div class="feed-tab">
+        <h4>For You</h4>
+        <h4>Following</h4>
+      </div>
+      <div class="content-container">
+        <div class="feed-container">
+          <div class="post-container">
+            <div class="content-post">
+              <!----<img alt="user-img">---->
+              <i class="fa fa-user-circle" id="placeholder-user"><span id="username">User</span></i> <!--Remove this placeholder for User to apply actual user profile-->
+              <textarea name="user-post" id="userPost" placeholder="What's on your mind?" cols="30" rows="5" maxlength="180" oninput="checkInput()" onclick="enablePostButton()"></textarea>
+            </div>
+            <div class="btn-container">
+              <button><i class="fa fa-image"></i></button> 
+              <button><i class="fa fa-giphy" id="gif">GIF</i></button>
+              <button><i class="fa fa-bar-chart"></i></button>
+              <button><i class="fa fa-smile-o"></i></button>
+              <button><i class="fa fa-calendar"></i></button>
+              <button><i class="fa fa-map-marker"></i></button>
+            </div>
+              <button class="btn-container-post" id="post" onclick="postTweet()" disabled>Post</button>
+          </div>
+          <div id="post-container"></div> 
+        </div>
+      </div>
+      
+    </main>
+    <!----------------------(third) SECTION--------------------->
+    <div class="sidecontent-container">
+      <div class="search-container">
+        <!--search-icon-->
+        <!--textbox cguro-->
+      </div>
+      <div class="tofollow-container">
+        <h3>Who to Follow</h3>
+        <div class="tofollow-user"></div>
+      </div>
+      <div class="trend-container">
+        <h3>Trends for you</h3>
+        <div class="trend-content"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="login.js"></script>
+
+</body>
+</html>
