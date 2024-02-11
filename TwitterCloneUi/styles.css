@@ -945,16 +945,92 @@
 
 
     /*------------- TREND CONTENT PAGE -------------*/
-    .trend-container{
-        gap: 1.6rem;
+    .trend-container {
         background-color: var(--light-container-color);
         display: flex;
-        font-size: 3rem;
         color: white;
         padding: 1rem;
         margin: 15px auto;
         border-radius: 30px;
-        height: 44vh;
+        height: auto;
+        flex-wrap: wrap;
+    }
+
+    .trend-content{
+        width: 100%;
+        height: auto;
+        padding: 15px auto 0px 15px;
+    }
+
+    .trend-content h3{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .trend-content li{
+        font-size: 15px;
+        background: linear-gradient(to bottom right, rgba(231, 73, 206, 50%), rgba(188, 47, 237, 75%), rgba(143, 60, 225, 83.75%), rgba(70, 49, 92, 100));
+        list-style-type: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 10px 0px 0px 0px;
+        padding: 0px 10px 0px 7px;
+        border-radius: 10px;
+    }
+
+    /*if tag name exceeded*/
+    .trend-content li a {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        text-decoration: none;
+        font-weight: 500;
+        color: white;
+    }
+
+    .trend-content li p{
+        color: black;
+    }
+
+    .trend-content button{
+        border: none;
+        outline: none;
+        background: none;
+        margin-right: 5px;
+        color:rgb(100, 95, 95);
+        transition: .3s linear;
+        cursor: pointer;
+    }
+    
+    .trend-content button:hover{
+        color:rgb(0, 0, 0);
+    }
+
+    .trend-content button i{
+        margin-right: 5px;
+    }
+    
+    .more {
+        display: none;
+    }
+    
+    .show {
+        display: block;
+    }
+
+    .see-more{
+        width: 100%;
+        border: none;
+        background: none;
+        outline: none;
+        font-weight: 400;
+        font-size: 12px;
+        padding: 10px 0;
+        text-align: center;
+        transition: .3s linear;
+        cursor: pointer;
     }
 
 /*=============== BREAKPOINTS ===============*/
@@ -1127,5 +1203,7 @@
             grid-template-columns: 3rem auto; /*tentative*/
             gap: 1rem;
         }
+
+        
     }
 

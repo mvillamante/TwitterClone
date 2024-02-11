@@ -33,5 +33,22 @@ viewpost.addEventListener('click', function() {
     }
 });
 
-
+// script when icon down/up is clicked
+const moreIcon = document.querySelectorAll('.fa-solid.fa-caret-down');
+moreIcon.forEach(icon => {
+    icon.addEventListener('click', function() {
+        // changes the icon
+        if (this.classList.contains('fa-caret-down')) {
+            this.classList.remove('fa-caret-down');
+            this.classList.add('fa-caret-up');
+        } else {
+            this.classList.remove('fa-caret-up');
+            this.classList.add('fa-caret-down');
+        }
+        
+        // shows and/or hides elements
+        const moreElement = this.parentElement.nextElementSibling;
+        moreElement.classList.toggle('show');
+    });
+});
 
