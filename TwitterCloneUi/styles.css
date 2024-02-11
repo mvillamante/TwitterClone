@@ -671,7 +671,7 @@
         align-items: center;
         overflow-x: hidden;
         position: absolute;
-        bottom: 2rem;
+        bottom: 3rem;
         transition: all 500ms ease;
     }
 
@@ -693,7 +693,7 @@
 
     .nav-user i {
         margin-left: 8px;
-        font-size: 20px;
+        font-size: 18px;
     }
 
     .user-popup {
@@ -940,7 +940,7 @@
         padding: 1rem;
         margin: 15px auto;
         border-radius: 30px;
-        height: 44vh;
+        height: 35vh;
     }
 
 
@@ -970,7 +970,7 @@
 
     .trend-content li{
         font-size: 15px;
-        background: linear-gradient(to bottom right, rgba(231, 73, 206, 50%), rgba(188, 47, 237, 75%), rgba(143, 60, 225, 83.75%), rgba(70, 49, 92, 100));
+        background: linear-gradient(to right, rgba(231, 73, 206, 50%), rgba(188, 47, 237, 75%), rgba(143, 60, 225, 83.75%), rgba(70, 49, 92, 100));
         list-style-type: none;
         display: flex;
         align-items: center;

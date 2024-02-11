@@ -73,26 +73,22 @@ document.addEventListener('DOMContentLoaded', function() {
 function register(event) {
     event.preventDefault();
     
-    const formData =  {
-        username: document.querySelector('.sign-up-form input[type="text"]').value,
-        password: document.querySelector('.sign-up-form input[type="password"]').value,
-    };
+    username: document.getElementById('.signUpUsername').value
+    password: document.getElementById('.signUpPassword').value
 
-    console.log(formData.username);
-    console.log(formData.password);
 
     fetch('http://localhost:3000/api/v1/auth/register', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(username, password)
     })
     .then(response => {
         if (!response.ok) {
-            throw new Error('Failed to register user');
+            throw new Error('Error:', response.status);
         }
-        return response.text();
+        return response.json();
         })
         .then(data => {
             console.log(data);
