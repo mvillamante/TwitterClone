@@ -43,9 +43,9 @@
           </li>
         </ul>
         <a href="#userPost" class="nav-btn">
-          <div class="outer-btn">
+          <div id="navPost" class="outer-btn">
             <div class="inner-btn"></div>
-            <button class="post-btn">
+            <button class="post-btn" id="navPosting">
               <i class="fa fa-pencil" aria-hidden="true"></i>
               <h3>post</h3>
             </button>
@@ -75,7 +75,7 @@
           <div class="post-container" id="top-post-container">
             <div class="content-post">
               <img alt="user-img"><span id="username">User</span>
-              <textarea name="user-post" id="userPost" placeholder="What's on your mind?" cols="30" rows="5" maxlength="180" oninput="checkInput()" onclick="enablePostButton()"></textarea>
+              <textarea name="user-post" id="userPost" placeholder="What's on your mind?" cols="30" rows="5"  oninput="checkInput()"></textarea>
             </div>
             <div class="btn-container">
               <button><i class="fa fa-image"></i></button> 
@@ -84,7 +84,8 @@
               <button><i class="fa fa-smile-o"></i></button>
               <button><i class="fa fa-calendar"></i></button>
               <button><i class="fa fa-map-marker"></i></button>
-              <div class="outer-btn">
+              <span id="counter">255</span>
+              <div id="boxPost" class="outer-btn">
                 <div class="inner-btn"></div>
                 <button class="post-btn" id="postbtn" onclick="postTweet()" disabled>
                   <i class="fa fa-pencil" aria-hidden="true"></i>

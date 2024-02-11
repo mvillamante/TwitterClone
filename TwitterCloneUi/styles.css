@@ -630,9 +630,13 @@
         width: 200%;
         height: 100%;
         left: -100%;
-        background: linear-gradient(to top right, rgba(231, 73, 206, 50%), rgba(188, 47, 237, 75%), rgba(143, 60, 225, 83.75%), rgba(70, 49, 92, 100));
         transition: all 500ms ease;
     }
+
+    #navPost {
+        background: linear-gradient(to top right, rgba(231, 73, 206, 50%), rgba(188, 47, 237, 75%), rgba(143, 60, 225, 83.75%), rgba(70, 49, 92, 100));
+    }
+
     .post-btn{
         height: 100%;
         width: 100%;
@@ -644,6 +648,17 @@
         text-transform: uppercase;
         cursor: pointer;
     }
+
+    #postbtn:enabled {
+        background: linear-gradient(to top right, rgba(231, 73, 206, 50%), rgba(188, 47, 237, 75%), rgba(143, 60, 225, 83.75%), rgba(70, 49, 92, 100));
+    }
+    
+    #postbtn:disabled {
+        background-color: #878686;
+        cursor: not-allowed;
+    }
+
+
     .post-btn h3{
         font-size: 20px;
     }
@@ -659,6 +674,18 @@
     }
     .outer-btn:active{
         transform: scale(0.96);
+    }
+
+    #boxPost {
+        background: #878686;
+        margin-left: 4rem;
+    }
+
+    #counter {
+        color: #878686;
+        font-size: 1rem;
+        margin-top: 0.50rem;
+        margin-left: rem;
     }
 
     .nav-user, .post-btn{

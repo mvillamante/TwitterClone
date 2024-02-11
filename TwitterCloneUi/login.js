@@ -73,22 +73,23 @@ document.addEventListener('DOMContentLoaded', function() {
 function register(event) {
     event.preventDefault();
     
-    username: document.getElementById('.signUpUsername').value
-    password: document.getElementById('.signUpPassword').value
-
+    const formData =  {
+    username: document.getElementById('signUpUsername').value,
+    password: document.getElementById('signUpPassword').value
+    }
 
     fetch('http://localhost:3000/api/v1/auth/register', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(username, password)
+        body: JSON.stringify(formData)
     })
     .then(response => {
         if (!response.ok) {
             throw new Error('Error:', response.status);
         }
-        return response.json();
+        return response.text();
         })
         .then(data => {
             console.log(data);
@@ -97,7 +98,7 @@ function register(event) {
         })
         .catch(error => {
             console.error('Error:', error);
-            alert('Failed to register user');
+            alert('Username already exist');
         });
     }
 
