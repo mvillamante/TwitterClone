@@ -52,3 +52,17 @@ moreIcon.forEach(icon => {
     });
 });
 
+
+const buttons = document.querySelectorAll('.btn-container.viewpost .btn');
+
+buttons.forEach((button) => {
+  button.addEventListener('click', () => {
+    if (button.dataset.active === 'false') {
+      button.dataset.active = 'true';
+      button.classList.add('active');
+    } else {
+      button.dataset.active = 'false';
+      button.classList.remove('active');
+    }
+  });
+});

@@ -828,8 +828,27 @@
         background-clip: text;
         color: transparent;
         transition: all 200ms ease;
-
     }
+    .btn-container button:not(:last-child).active {
+        background-color: transparent;
+        background: linear-gradient(to bottom right, rgba(231, 73, 206, 50%), rgba(188, 47, 237, 75%), rgba(143, 60, 225, 83.75%), rgba(70, 49, 92, 100));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        cursor: pointer;
+        animation: scale-in 1s ease forwards;
+      }
+      
+      @keyframes scale-in {
+        from {
+          transform: scale(1.3);
+        }
+        to {
+          transform: scale(1);
+        }
+      }
+      
+
     .btn-container #gif {
         color: #262328;
         font-size: 9px; 
