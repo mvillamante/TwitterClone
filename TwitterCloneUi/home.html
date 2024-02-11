@@ -17,8 +17,8 @@
     <nav>
       <div class="top">
         <div class="home-logo">
-          <img src="img/logo_light.png" alt="vespera">
-          <a href="index.html"><h2>VESPERA</h2></a>
+          <img src="/TwitterCloneUi/img/LIGHT.svg" alt="vespera">
+          <a><h2>VESPERA</h2></a>
         </div>
       </div>
       <div class="nav-container">
@@ -40,7 +40,7 @@
             </a>            
           </li>
         </ul>
-        <a href="#" class="nav-btn">
+        <a href="#userPost" class="nav-btn">
           <div class="outer-btn">
             <div class="inner-btn"></div>
             <button class="post-btn">
@@ -51,7 +51,7 @@
         </a>
         <div class="nav-user-container">
           <div class="nav-user">
-            <img src="./assets/img/user_pfp.png">
+            <img src="/TwitterCloneUi/img/user_pfp.png">
             <div class="nav-usertxt">
               <h4>Wade Warren</h4>
             </div>
@@ -61,7 +61,7 @@
       </div>
       <div class="user-popup">
         <h4>Add an existing account</h4>
-        <h4>Log out </h4>
+        <a href="index.html"><h4>Log out </h4></a>
       </div>
       <div class="triangle"></div>
     </nav>
@@ -69,10 +69,9 @@
     <main class="homepage-main">
       <div class="content-container">
         <div class="feed-container">
-          <div class="post-container">
+          <!--User-Post-->
+          <div class="post-container" id="top-post-container">
             <div class="content-post">
-              <!----<img alt="user-img">---->
-              <!--<i class="fa fa-user-circle" id="placeholder-user"><span id="username">User</span></i>-->
               <img alt="user-img"><span id="username">User</span>
               <textarea name="user-post" id="userPost" placeholder="What's on your mind?" cols="30" rows="5" maxlength="180" oninput="checkInput()" onclick="enablePostButton()"></textarea>
             </div>
@@ -91,12 +90,15 @@
               </div>
             </div>
           </div>
+          <!--Follower-Post-->
           <div class="post-container">
             <div class="content-post">
               <img alt="user-img"><span id="username">User</span>
-              <div class="user-text unpost">lorem ipsum dolor sit amet</div>
+              <div class="post-text">
+                Trying to explain the plot of my favorite anime series is like trying to describe the color blue to a blind person. 🤷‍♀️🎨
+              </div>
             </div>
-            <div class="btn-container">
+            <div class="btn-container viewpost">
               <button><i class="fa fa-comment" aria-hidden="true"></i></button>
               <button><i class="fa fa-retweet" aria-hidden="true"></i></button>
               <button><i class="fa fa-heart"></i></button>
@@ -104,6 +106,65 @@
               <button></button>
             </div>
           </div>
+          <!--Follower-Post-wPic-->
+          <div class="post-container">
+            <div class="content-post">
+              <img alt="user-img"><span id="username">User</span>
+              <div class="post-text">
+                Oops, I did it again! Procrastination strikes once more. 😅 It's like I have a PhD in delaying tasks. Time to channel my inner productivity and tackle that to-do list! 
+              </div>
+              <div class="post-media">
+                <img src="/TwitterCloneUi/img/samplephoto1.jpg" alt="sample">
+                <img src="/TwitterCloneUi/img/samplephoto2.jpg" alt="sample">
+              </div>
+            </div>
+            <div class="btn-container viewpost">
+              <button><i class="fa fa-comment" aria-hidden="true"></i></button>
+              <button><i class="fa fa-retweet" aria-hidden="true"></i></button>
+              <button><i class="fa fa-heart"></i></button>
+              <button><i class="fa fa-share-alt"></i></button>
+              <button></button>
+            </div>
+          </div>
+          <!--Follower-Post-->
+          <div class="post-container">
+            <div class="content-post">
+              <img alt="user-img"><span id="username">User</span>
+              <div class="post-text">
+                Tok-tok-tok, ako'y kumakatok Ha-ha-ha, ako’y natatawa L-O-V-E, na-na-na Sobrang gwapo, hahaha
+              </div>
+            </div>
+            <div class="btn-container viewpost">
+              <button><i class="fa fa-comment" aria-hidden="true"></i></button>
+              <button><i class="fa fa-retweet" aria-hidden="true"></i></button>
+              <button><i class="fa fa-heart"></i></button>
+              <button><i class="fa fa-share-alt"></i></button>
+              <button></button>
+            </div>
+          </div>
+          <!--Follower-Post-wPic-->
+          <div class="post-container">
+            <div class="content-post">
+              <img alt="user-img"><span id="username">User</span>
+              <div class="post-text">
+                Feeling like a zombie after pulling an all-nighter cramming for exams... 
+              </div>
+              <div class="post-media">
+                <img src="/TwitterCloneUi/img/samplephoto3.jpg" alt="sample">
+                <img src="/TwitterCloneUi/img/samplephoto4.jpg" alt="sample">
+                <img src="/TwitterCloneUi/img/samplephoto5.jpg" alt="sample">
+                <img src="/TwitterCloneUi/img/samplephoto6.jpg" alt="sample">
+              </div>
+            </div>
+            <div class="btn-container viewpost">
+              <button><i class="fa fa-comment" aria-hidden="true"></i></button>
+              <button><i class="fa fa-retweet" aria-hidden="true"></i></button>
+              <button><i class="fa fa-heart"></i></button>
+              <button><i class="fa fa-share-alt"></i></button>
+              <button></button>
+            </div>
+          </div>
+          
         </div>
       </div>
       
@@ -111,9 +172,7 @@
     <!----------------------(third) SECTION--------------------->
     <div class="sidecontent-container">
       <div class="search-container">
-        <!--search-icon-->
         <i class="fa fa-search"></i>
-        <!--textbox cguro-->
         <input type="text" placeholder="Search">
       </div>
       <div class="tofollow-container">

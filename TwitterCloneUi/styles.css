@@ -459,14 +459,6 @@
         grid-template-columns: 18rem auto 18rem; /*size ni each section*/
         height: 100%;
         transition: all .5s ease;
-    }
-
-    .home-logo img{
-        display: block;
-        width: 50%;                 
-    }
-    .profile-photo{ /*Not used yet?*/
-        border-radius: 50%;
         overflow: hidden;
     }
 
@@ -492,6 +484,8 @@
         overflow-x: hidden;
     }
     .home-logo img{
+        display: block;
+        width: 50%;  
         width: 5rem;
         height: 5rem;
         transition: all .5s ease;
@@ -506,7 +500,7 @@
     .nav-container{
         display: flex;
         flex-direction: column;
-        height: 86vh;
+        height: 84vh; /*UPDATE MO TO ETO YUN SA SCROLL*/
         position: relative;
         overflow-x: hidden;
         top: 3rem;
@@ -686,6 +680,10 @@
         cursor: pointer;
         box-shadow: 2px 4px 20px rgba(0, 0, 0, 0.3);
     }
+    .nav-user img{
+        width: 4rem;
+        height: 4rem;
+    }
 
     .nav-usertxt h4 {
         display: flex;
@@ -708,7 +706,7 @@
         justify-content: center;
         align-items: center;
         position: absolute;
-        bottom: 6.5rem;
+        bottom: 7.9rem;
         box-shadow: 2px 4px 20px rgba(161, 154, 154, 0.3);
         transition: all 500ms ease;
     }
@@ -761,6 +759,10 @@
 /*=============== HOMEPAGE ==============*/
     .homepage-main{
         transition: all 1s ease;
+        overflow-y: auto;
+    }
+    .homepage-main::-webkit-scrollbar {
+        display: none;
     }
     #username{
         margin-left: 10px;
@@ -788,8 +790,15 @@
     .btn-container{
         display: flex;
         gap: 0.5rem;
-        margin: 8px auto 1px 8px;
+        margin: 8px auto auto 8px;
     }
+    .btn-container.viewpost{
+        gap: 5rem;
+        padding-left: 70px;
+        justify-content: center;
+        align-items: center;
+    }
+    
     .btn-container button:not(:last-child){
         justify-content: center;
         align-items: center;
@@ -797,19 +806,21 @@
         background: none;
         border: none;
         border-radius: 50%;
-        background: linear-gradient(to bottom right, rgba(231, 73, 206, 50%), rgba(188, 47, 237, 75%), rgba(143, 60, 225, 83.75%), rgba(70, 49, 92, 100));
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
+        color: var(--text-muted-color);
         cursor: pointer;
         font-size: 18px;
         margin-right: 10px;
         padding: 5px 3px;
-        transition: all 200ms ease-in-out;
+        transition: all 200ms ease;
       }
       .btn-container button:not(:last-child):hover{
         background-color: transparent;
-        color:white;
+        background: linear-gradient(to bottom right, rgba(231, 73, 206, 50%), rgba(188, 47, 237, 75%), rgba(143, 60, 225, 83.75%), rgba(70, 49, 92, 100));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        transition: all 200ms ease;
+
     }
     .btn-container #gif {
         color: #262328;
@@ -817,12 +828,13 @@
         margin-bottom: 6px;
         padding: 3px 3px;
         border-radius: 2px;
-        background: linear-gradient(to bottom right, rgba(231, 73, 206, 50%), rgba(188, 47, 237, 75%), rgba(143, 60, 225, 83.75%), rgba(70, 49, 92, 100));
+        background: var(--text-muted-color);
         transition: all 200ms ease-in-out;
     }
     .btn-container #gif:hover {
         transition: all 200ms ease-in-out;
-        background: white;
+        background: linear-gradient(to bottom right, rgba(231, 73, 206, 50%), rgba(188, 47, 237, 75%), rgba(143, 60, 225, 83.75%), rgba(70, 49, 92, 100));
+        
     }
     .btn-container-post {
         background: rgb(100, 95, 95);
@@ -851,14 +863,11 @@
         width: 80px;
         top: unset;
     }
-    .btn-container .outer-btn .inner-btn{
-    }
 
 
     .content-container{
         background-color: rgb(38,35,40);
     }
-
     .post-container{
         gap: 1.6rem;
         display: block;
@@ -867,14 +876,31 @@
         background: var(--light-container-color);
         border-radius: 30px;
     }
-    .tweet-container {
-        color: white;
-        gap: 1.6rem;
+    .post-text{
+        padding: 7px;
+        color: var(--text-color);
+        font-size: 15px;
+        line-height: 1.5;
+    }
+    .post-media {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 10px; 
         margin: 15px auto;
-        padding: 10px;
-        background: var(--light-container-color);
-        border-radius: 30px;
-      }
+        transition: all 200ms ease-in-out;
+        align-items: center;
+    }
+    .post-media img {
+        max-width: 100%; 
+        height: 100%; 
+        border-radius: 25px;
+        transition: all 200ms ease;
+    }
+    .post-media img:hover{
+        transform: scale(1.03);
+    }
+
+/*=============== SIDECONTENT(right) ==============*/
     .sidecontent-container{
         justify-content: center;
         align-items: center;
@@ -916,9 +942,6 @@
         border-radius: 30px;
         height: 44vh;
     }
-    /*.tofollow-user{
-        background-color: pink;
-    }*/
 
 
     /*------------- TREND CONTENT PAGE -------------*/
@@ -933,9 +956,6 @@
         border-radius: 30px;
         height: 44vh;
     }
-    /*.trend-content{
-        background-color: pink;
-    }*/
 
 /*=============== BREAKPOINTS ===============*/
 
@@ -980,11 +1000,11 @@
         }
         .user-popup{
             left: 1%;
-            bottom: 6rem;
+            bottom: 7.5rem;
         }
         .triangle{
             left: 30px;
-            top: -67px;
+            top: -72px;
         }
     }
     @media (max-width: 1050px) {
@@ -1002,7 +1022,6 @@
         .home-container nav{
             width: 70px;
         }
-
     }
 
     @media (max-width: 850px) {
