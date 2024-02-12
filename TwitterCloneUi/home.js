@@ -68,26 +68,26 @@ buttons.forEach((button) => {
 });
 
 
-// //check input
-// function checkInput() {
-//     var textarea = document.getElementById('userPost');
-//     var postButton = document.getElementById('postbtn');
-//     var counter = document.getElementById('counter');
+//check input
+function checkInput() {
+    var textarea = document.getElementById('userPost');
+    var postButton = document.getElementById('postbtn');
+    var counter = document.getElementById('counter');
 
-//     var remainCharacters = 255 - textarea.value.length;
-//     counter.textContent = remainCharacters;
+    var remainCharacters = 255 - textarea.value.length;
+    counter.textContent = remainCharacters;
 
 
-//     if (remainCharacters < 0) {
-//         counter.style.color ='#c1121f';
-//         postButton.disabled = true;
-//     } else if (textarea.value.length === 0 || textarea.value.length > 255) {
-//         postButton.disabled = true;
-//     } else {
-//         counter.style.color = '';
-//         postButton.disabled = false;
-//     }
-// }
+    if (remainCharacters < 0) {
+        counter.style.color ='#c1121f';
+        postButton.disabled = true;
+    } else if (textarea.value.length === 0 || textarea.value.length > 255) {
+        postButton.disabled = true;
+    } else {
+        counter.style.color = '';
+        postButton.disabled = false;
+    }
+}
 
-// var textarea = document.getElementById('userPost');
-// textarea.addEventListener('input', checkInput);
+var textarea = document.getElementById('userPost');
+textarea.addEventListener('input', checkInput);
