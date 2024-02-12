@@ -55,7 +55,7 @@
           <div class="nav-user">
             <img src="img/user-icon-black.png">
             <div class="nav-usertxt">
-              <h4>Wade Warren</h4>
+              <h4 id="current-user">Wade Warren</h4>
             </div>
             <i class="fa fa-ellipsis-h"></i>
           </div>
@@ -261,6 +261,10 @@
   </div>
 
   <script src="home.js"></script>
+  <script src="home.js" defer></script>
+  <script >
+    document.getElementById("current-user").innerHTML = currentUser;
+  </script>
 
 </body>
 </html>

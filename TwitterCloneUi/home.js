@@ -219,7 +219,7 @@ async function displayUserAndFollowingPosts() {
     postsContainer.innerHTML = `
     <div class="post-container" id="top-post-container">
         <div class="content-post">
-            <img src="img/user-icon-black.png"id="user-img"><span id="username">User</span>
+            <img src="img/user-icon-black.png"id="user-img"><span id="username">${currentUser}</span>
             <textarea name="user-post" id="userPost" placeholder="What's on your mind?" cols="30" rows="5"  oninput="checkInput()"></textarea>
             </div>
             <div class="btn-container">
@@ -293,7 +293,7 @@ async function displayUserPosts() {
         </div>
         <div class="profile-container">
             <img src="img/user-icon-black.png">
-            <h4>Username</h4>
+            <h4>${currentUser}</h4>
             <p>Exploring the mysteries of Vespera 🌌 | Dreaming of new horizons ✨| Seeking new discoveries and forging 
                 unforgettable memories 🚀</p>
                 <h5><i class="fa fa-calendar"></i> Joined 2024</h5>
