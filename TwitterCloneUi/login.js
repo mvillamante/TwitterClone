@@ -111,7 +111,7 @@ function login() {
         "username": username, 
         "password": password
     }
-    loginApi(data);
+    loginApi(loginData);
 }
 //login API function
 async function loginApi(data) {
