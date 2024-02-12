@@ -104,19 +104,19 @@ async function registerApi(data) {
 //login function
 function login() {
     
-    const username = document.querySelector('.sign-in-form input[type="text"]').value;
-    const password = document.querySelector('.sign-in-form input[type="password"]').value;
+    const username = document.getElementById('usernameInput').value;
+    const password = document.getElementById('passwordInput').value;
+
 
     const loginData = {
         "username": username, 
         "password": password
-    }
+    };
     loginApi(loginData);
 }
 //login API function
 async function loginApi(data) {
-    try{
-        
+    try {
         const res = await fetch("http://localhost:3000/api/v1/auth/login", {
             method: "POST",
             headers: {
@@ -124,14 +124,15 @@ async function loginApi(data) {
             },
             body: JSON.stringify(data)
         });
+        
         if (res.ok) {
-            const token = await res.text()
+            const token = await res.text();
             localStorage.setItem('token', token);
             console.log(token); 
             window.location.href = 'home.html';
         } else {
             alert('Incorrect username or password');
-            const errorData = await res.json();
+            const errorData = await res.text();
             console.error(errorData);
         }
     } catch(error) {
