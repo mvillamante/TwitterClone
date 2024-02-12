@@ -1062,6 +1062,26 @@
         margin: 15px auto;
         border-radius: 30px;
         height: 35vh;
+        flex-direction: column;
+    }
+
+    .user-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+
+    .user-post-pfp{
+        height: 2rem;
+        width: 2rem;
+    }
+
+    .follow-button{
+        background: linear-gradient(to bottom right, rgba(231, 73, 206, 50%), rgba(188, 47, 237, 75%), rgba(143, 60, 225, 83.75%), rgba(70, 49, 92, 100));
+    }
+
+    .unfollow-button{
+        background: linear-gradient(to bottom right, rgba(231, 73, 206, 50%), rgba(188, 47, 237, 75%), rgba(143, 60, 225, 83.75%), rgba(70, 49, 92, 100));
     }
 
 
