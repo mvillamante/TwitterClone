@@ -916,6 +916,10 @@
     .content-container {
         background-color: rgb(38, 35, 40);
     }
+    .content-post #user-img{
+        height: 2rem;
+        width: 2rem;
+    }
     .post-container {
         gap: 1.6rem;
         display: block;
@@ -1294,3 +1298,98 @@
         
     }
 
+    /*------------- PROFILE PAGE -------------*/
+    .profilepage-main{
+        margin-top: 1.4rem;
+    }
+
+    .header-pic img{
+        height: 100%;
+        width: 100%;
+        border-radius: 30px;
+        display: flex;
+        z-index: 0;
+        position: relative;
+    }
+    .profile-container{
+        display: flex;
+        background: var(--light-container-color);
+        padding: 1rem;
+        border-radius: 0px 0px 30px 30px;
+        height: 30%;
+        margin-top: -2rem;
+        z-index: 1;
+        position: relative;
+        flex-direction: column;
+    }
+    .profile-container img{
+        padding: 5px 10px;
+        align-self: flex-start;
+        margin-top: -5.5rem;
+        width: 150px;
+        height: auto; 
+    }
+
+    .profile-container h4{
+        font-style: var(--big-font-size);
+        margin: 0rem 1rem 0rem;
+        align-self: flex-start;
+    }
+    .profile-container i{
+        padding-right: 1rem;
+        margin-bottom: 1rem;
+    }
+    .profile-container h5{
+        font-style: var(--big-font-size);
+        color: var(--text-muted-color);
+        margin: 0rem 1rem;
+        align-self: flex-start;
+    }
+    .profile-container p{
+        font-style: var(--body-font);
+        color: var(--text-color);
+        margin: 1rem 1rem;
+        align-self: flex-start;
+    }
+
+    .profile-follows{
+        display: flex;
+    }
+    .profile-follows h5{
+        margin: 0rem 0rem 0rem 0.3rem;
+        align-self: flex-start;
+    }
+    .profile-follows h5:nth-child(1),.profile-follows h5:nth-child(3) {
+        font-style: var(--big-font-size);
+        color: var(--text-color);
+        margin-left: 1rem;
+    }
+
+   /*------------- BREAK POINTS PROFILE PAGE -------------*/
+    @media(max-width: 1370px){
+    .profile-container{
+        height: 33%;
+    }
+    .profile-container img{
+        margin-top: -4rem;
+        width: 100px;
+        height: auto;
+    }
+    }
+
+    @media(max-width: 1150px){
+    .profile-container{
+        height: 35%;
+    }
+    }
+
+    @media(max-width: 530px){
+    .profile-container{
+        height: 38%;
+    }
+    .profile-container img{
+        margin-top: -4rem;
+        width: 100px;
+        height: auto;
+    }
+   }
