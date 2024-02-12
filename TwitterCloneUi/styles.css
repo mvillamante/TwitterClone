@@ -277,6 +277,7 @@
         transition: 0.4s;
     }
 
+
     label {
         position: absolute;
         left: 0;
@@ -295,6 +296,13 @@
     .input-field.active + label{
         font-size: 0.75rem;
         top: -2px;
+    }
+
+    .fa-solid{
+        margin-left: 15rem;
+        cursor: pointer;
+        top: 0;
+        position: absolute;
     }
 
     .sign-btn {
@@ -1207,6 +1215,10 @@
             margin: 2rem 0;
         }
 
+        .fa-solid {
+            margin-left: 24rem;
+        }
+
         form.sign-up-form {
             transform: translateX(100%);
         }
@@ -1260,6 +1272,9 @@
             padding: 1rem;
         }
 
+        .fa-solid {
+            margin-left: 18rem;
+        }
 
         .carousel {
             padding: 1.5rem 1rem;
