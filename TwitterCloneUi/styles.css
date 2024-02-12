@@ -449,6 +449,7 @@
         background-color: #fff;
         border-radius: 1rem;
     }  
+    
 
 /*=============== NAVIGATION ==============*/
     .home-container{
@@ -793,12 +794,16 @@
 
 /*=============== HOMEPAGE ==============*/
     .homepage-main{
-        transition: all 1s ease;
         overflow-y: auto;
     }
     .homepage-main::-webkit-scrollbar {
         display: none;
     }
+
+
+    .timeline-main{
+    }
+
     #username{
         margin-left: 10px;
         font-style: var(--big-font-size);
@@ -919,6 +924,7 @@
     .content-post #user-img{
         height: 2rem;
         width: 2rem;
+        transition: all 500ms ease;
     }
     .post-container {
         gap: 1.6rem;
@@ -958,17 +964,85 @@
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 10px; 
         margin: 15px auto;
-        transition: all 200ms ease-in-out;
+        transition: 500ms ease-in-out;
         align-items: center;
     }
     .post-media img {
         max-width: 100%; 
         height: 100%; 
         border-radius: 25px;
-        transition: all 200ms ease;
+        transition: 500ms ease-in-out;
     }
     .post-media img:hover{
         transform: scale(1.03);
+    }
+
+    /*------------- PROFILE PAGE -------------*/
+    .profile-main{
+        margin-top: 1.4rem;
+        display: none;
+    }
+
+    .header-pic img{
+        height: 100%;
+        width: 100%;
+        border-radius: 30px;
+        display: flex;
+        z-index: 0;
+        position: relative;
+    }
+    .profile-container{
+        display: flex;
+        background: var(--light-container-color);
+        padding: 1rem;
+        border-radius: 0px 0px 30px 30px;
+        height: 30%;
+        margin-top: -2rem;
+        z-index: 1;
+        position: relative;
+        flex-direction: column;
+    }
+    .profile-container img{
+        padding: 5px 10px;
+        align-self: flex-start;
+        margin-top: -5.5rem;
+        width: 150px;
+        height: auto; 
+    }
+
+    .profile-container h4{
+        font-style: var(--big-font-size);
+        margin: 0rem 1rem 0rem;
+        align-self: flex-start;
+    }
+    .profile-container i{
+        padding-right: 1rem;
+        margin-bottom: 1rem;
+    }
+    .profile-container h5{
+        font-style: var(--big-font-size);
+        color: var(--text-muted-color);
+        margin: 0rem 1rem;
+        align-self: flex-start;
+    }
+    .profile-container p{
+        font-style: var(--body-font);
+        color: var(--text-color);
+        margin: 1rem 1rem;
+        align-self: flex-start;
+    }
+
+    .profile-follows{
+        display: flex;
+    }
+    .profile-follows h5{
+        margin: 0rem 0rem 0rem 0.3rem;
+        align-self: flex-start;
+    }
+    .profile-follows h5:nth-child(1),.profile-follows h5:nth-child(3) {
+        font-style: var(--big-font-size);
+        color: var(--text-color);
+        margin-left: 1rem;
     }
 
 /*=============== SIDECONTENT(right) ==============*/
@@ -1050,7 +1124,10 @@
         padding: 0px 10px 0px 7px;
         border-radius: 10px;
     }
-
+    .trend-content li:hover{
+        transform: scale(1.02);
+        transition: linear 500ms;
+    }
     /*if tag name exceeded*/
     .trend-content li a {
         overflow: hidden;
@@ -1106,6 +1183,17 @@
     }
 
 /*=============== BREAKPOINTS ===============*/
+    @media(max-width: 1370px){
+        /*------------- PROFILE PAGE -------------*/
+        .profile-container{
+            height: 33%;
+        }
+        .profile-container img{
+            margin-top: -4rem;
+            width: 100px;
+            height: auto;
+        }
+        }
 
     @media (max-width: 1150px) {
         /*------------- CONTENT PAGE -------------*/
@@ -1121,6 +1209,11 @@
         }
         .home-container nav{
             width: 70px;
+        }
+
+        /*------------- PROFILE PAGE -------------*/
+        .profile-container{
+            height: 35%;
         }
 
         /*------------- NAVIGATION BAR -------------*/
@@ -1295,101 +1388,13 @@
             padding-left: 0px;
         }
 
-        
+        /*------------- PROFILE PAGE -------------*/
+        .profile-container{
+            height: 38%;
+        }
+        .profile-container img{
+            margin-top: -4rem;
+            width: 100px;
+            height: auto;
+        }
     }
-
-    /*------------- PROFILE PAGE -------------*/
-    .profilepage-main{
-        margin-top: 1.4rem;
-    }
-
-    .header-pic img{
-        height: 100%;
-        width: 100%;
-        border-radius: 30px;
-        display: flex;
-        z-index: 0;
-        position: relative;
-    }
-    .profile-container{
-        display: flex;
-        background: var(--light-container-color);
-        padding: 1rem;
-        border-radius: 0px 0px 30px 30px;
-        height: 30%;
-        margin-top: -2rem;
-        z-index: 1;
-        position: relative;
-        flex-direction: column;
-    }
-    .profile-container img{
-        padding: 5px 10px;
-        align-self: flex-start;
-        margin-top: -5.5rem;
-        width: 150px;
-        height: auto; 
-    }
-
-    .profile-container h4{
-        font-style: var(--big-font-size);
-        margin: 0rem 1rem 0rem;
-        align-self: flex-start;
-    }
-    .profile-container i{
-        padding-right: 1rem;
-        margin-bottom: 1rem;
-    }
-    .profile-container h5{
-        font-style: var(--big-font-size);
-        color: var(--text-muted-color);
-        margin: 0rem 1rem;
-        align-self: flex-start;
-    }
-    .profile-container p{
-        font-style: var(--body-font);
-        color: var(--text-color);
-        margin: 1rem 1rem;
-        align-self: flex-start;
-    }
-
-    .profile-follows{
-        display: flex;
-    }
-    .profile-follows h5{
-        margin: 0rem 0rem 0rem 0.3rem;
-        align-self: flex-start;
-    }
-    .profile-follows h5:nth-child(1),.profile-follows h5:nth-child(3) {
-        font-style: var(--big-font-size);
-        color: var(--text-color);
-        margin-left: 1rem;
-    }
-
-   /*------------- BREAK POINTS PROFILE PAGE -------------*/
-    @media(max-width: 1370px){
-    .profile-container{
-        height: 33%;
-    }
-    .profile-container img{
-        margin-top: -4rem;
-        width: 100px;
-        height: auto;
-    }
-    }
-
-    @media(max-width: 1150px){
-    .profile-container{
-        height: 35%;
-    }
-    }
-
-    @media(max-width: 530px){
-    .profile-container{
-        height: 38%;
-    }
-    .profile-container img{
-        margin-top: -4rem;
-        width: 100px;
-        height: auto;
-    }
-   }

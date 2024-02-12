@@ -1,17 +1,32 @@
 let navlist = document.querySelectorAll('.navlist');
+let profileSection = document.querySelector('.profile-main');
+let timelineSection = document.querySelector('.timeline-main');
 
 function activeLink() {
     for (let j = 0; j < navlist.length; j++) {
         navlist[j].classList.remove('active');
     }
     this.classList.add('active');
-}
 
+    // Hide both sections by default
+    profileSection.style.display = 'none';
+    timelineSection.style.display = 'none';
+
+    // Determine which section to display based on the clicked icon
+    if (this === navlist[1]) { 
+        profileSection.style.display = 'block';
+    }
+    else if (this === navlist[0]) { 
+        timelineSection.style.display = 'block';
+    }
+}
 
 navlist.forEach((item) =>
     item.addEventListener('click', activeLink));
 
 
+
+//navigation bar: user-popup
 let navUser = document.querySelector('.nav-user');
 let userPopup = document.querySelector('.user-popup');
 let showTriangle = document.querySelector('.triangle');
@@ -21,7 +36,7 @@ navUser.onclick = function(){
     showTriangle.classList.toggle('active')
 }
 
-
+//interactive button container
 let viewpost = document.querySelector('.btn-container.viewpost');
 
 viewpost.addEventListener('click', function() {
@@ -91,3 +106,4 @@ function checkInput() {
 
 var textarea = document.getElementById('userPost');
 textarea.addEventListener('input', checkInput);
+
