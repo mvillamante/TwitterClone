@@ -8,16 +8,14 @@ function activeLink() {
     }
     this.classList.add('active');
 
-    // Hide both sections by default
-    profileSection.style.display = 'none';
-    timelineSection.style.display = 'none';
-
     // Determine which section to display based on the clicked icon
     if (this === navlist[1]) { 
         profileSection.style.display = 'block';
+        timelineSection.style.display = 'none';
     }
     else if (this === navlist[0]) { 
         timelineSection.style.display = 'block';
+        profileSection.style.display = 'none';
     }
 }
 
