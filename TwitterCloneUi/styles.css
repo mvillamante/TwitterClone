@@ -56,7 +56,7 @@
         width: 100%;
         min-height: 100vh;
         overflow: hidden;
-        background: linear-gradient(to right, #854F6C, #522B5B, #2B124C, #190D19);
+        background: linear-gradient(to top right, #c0eefd, #c2aafe, #eec9d1, #dcdace);
         padding: 2rem;
         display: flex;
         align-items: center;
@@ -74,8 +74,7 @@
         /*background-color: pink;*/
     }
     .homepage-body{
-        background: var(--dark-bgcolor);
-        user-select: none;
+        background: linear-gradient(to top right, #c0eefd, #c2aafe, #eec9d1, #dcdace);
         overflow-x: hidden;
     }
 
@@ -124,7 +123,7 @@
         width: 100px;
         stroke: #fff;
         fill-opacity: 0;
-        stroke-width: 5px;
+        stroke-width: 10px;
         stroke-dasharray: 4500;
         animation: draw 4s ease;
     }
@@ -142,6 +141,7 @@
     .logo-name {
         color: #fff;
         font-size: var(--h3-font-size);
+        font-weight: var(--weight-400);
         letter-spacing: 12px;
         text-transform: uppercase;
         margin-left: 20px;
@@ -209,12 +209,6 @@
         pointer-events: none;
     }
 
-    .errorMessage{
-        color: red;
-        font-size: 0.75rem;
-        margin-bottom: 1rem;
-    }
-
     .intro-logo {
         display: flex;
         align-items: center;
@@ -228,17 +222,17 @@
     .intro-logo h4 {
         font-size: 1rem;
         letter-spacing: -0.5px;
-        color: #fff;
+        color: black;
     }
 
     .heading h2 {
         font-size: 2.1rem;
         font-weight: var(--weight-600);
-        color: #f4f3ee;
+        color: #151111;
     }
 
     .heading h6 {
-        color: #f4f3ee;
+        color: #151111;
         font-weight: var(--weight-400);
         font-size: 0.75rem;
         margin-top: 0.5rem;
@@ -270,10 +264,10 @@
         background: none;
         border: none;
         outline: none;
-        border-bottom: 1px solid white;
+        border-bottom: 1px solid #151111;
         padding: 0;
         font-size: 0.95rem;
-        color: white;
+        color: #151111;
         transition: 0.4s;
     }
 
@@ -284,13 +278,13 @@
         top: 50%;
         transform: translateY(-50%);
         font-size: 0.95rem;
-        color: #f4f3ee;
+        color: #151111;
         pointer-events: none;
         transition: 0.4s;
     }
 
     .input-field.active {
-        border-bottom-color: white;
+        border-bottom-color: #151111;
     }
 
     .input-field.active + label{
@@ -326,17 +320,17 @@
     }
 
     .text {
-        color: #bbb;
+        color: #151111;
         font-size: 0.7rem;
     }
 
     .text a{
-        color: #bbb;
+        color: #151111;
         transition: 0.3s;
     }
 
     .text a:hover {
-        color: #fff;
+        color: #151111;
     }
 
     main.sign-up-mode form.sign-in-form {
@@ -363,7 +357,7 @@
         width: 55%;
         left: 45%;
         top: 0;
-        background: linear-gradient(to top, #854F6C, #522B5B, #2B124C, #190D19);;
+        background: linear-gradient(to top left, #dcdace, #eec9d1, #c2aafe, #c0eefd);
         border-radius: 2rem;
         display: grid;
         grid-template-rows: auto 1fr;
@@ -426,7 +420,7 @@
 
     .text-group h2 {
         line-height: 2rem;
-        color: #f4f3ee;
+        color: #151111;
         font-weight: var(--weight-600);
         font-size: 1rem;
     }
@@ -441,7 +435,7 @@
         display: block;
         width: 0.5rem;
         height: 0.5rem;
-        background-color: #aaa;
+        background-color: #151111;
         margin: 0 0.25rem;
         border-radius: 50%;
         cursor: pointer;
@@ -449,12 +443,12 @@
     }
 
     .bullets span:hover {
-        background-color: #151111;
+        background-color: #fff;
     }
 
     .bullets span.active {
         width: 1.1rem;
-        background-color: #fff;
+        background-color: #151111;
         border-radius: 1rem;
     }  
     
@@ -474,13 +468,15 @@
 
     /*for the 3 sections on main*/
     .home-container nav{
-        background: var(--light-container-color);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 25px 45px rgba(0,0,0,0.5);
+        background: transparent;
         width: 300px;
         transition: all 1s ease;
         height: 100vh;
+        border-radius: 30px;
     }
     .home-container .top{
-        background: var(--light-container-color);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -501,7 +497,7 @@
     }
     .home-logo h2{
         background: transparent;
-        background: linear-gradient(to bottom right, rgba(231, 73, 206, 50%), rgba(188, 47, 237, 75%), rgba(143, 60, 225, 83.75%), rgba(70, 49, 92, 100));
+        background: #151111;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
@@ -536,7 +532,7 @@
         border-bottom-left-radius: 50px;
     }
     .nav-container ul li.active{
-        background: var(--dark-bgcolor);
+        background: #f4f3ee;;
 
     }
     .nav-container ul li.active b:nth-child(1),
@@ -549,13 +545,13 @@
     }
     .nav-container ul li:hover i, .nav-container ul li:hover h3{
         background: transparent;
-        background: linear-gradient(to bottom right, rgba(231, 73, 206, 50%), rgba(188, 47, 237, 75%), rgba(143, 60, 225, 83.75%), rgba(70, 49, 92, 100));
+        background: #151111;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
     .nav-container ul li.active i, .nav-container ul li.active h3{
         background: transparent;
-        background: linear-gradient(to bottom right, rgba(231, 73, 206, 50%), rgba(188, 47, 237, 75%), rgba(143, 60, 225, 83.75%), rgba(70, 49, 92, 100));
+        background: #151111;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
@@ -575,7 +571,7 @@
     .nav-container ul li b:nth-child(2){
         height: 20px;
         width: 100%;
-        background: var(--dark-bgcolor);
+        background: linear-gradient(to bottom rgba(70, 49, 92, 100));
         position: absolute;
         display: none;
     }
@@ -587,7 +583,6 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: var(--light-container-color);
     }
 
     .nav-btn{
@@ -643,7 +638,7 @@
     }
 
     #navPost {
-        background: linear-gradient(to top right, rgba(231, 73, 206, 50%), rgba(188, 47, 237, 75%), rgba(143, 60, 225, 83.75%), rgba(70, 49, 92, 100));
+        background: #f4f3ee;
     }
 
     .post-btn{
@@ -659,17 +654,20 @@
     }
 
     #postbtn:enabled {
-        background: linear-gradient(to top right, rgba(231, 73, 206, 50%), rgba(188, 47, 237, 75%), rgba(143, 60, 225, 83.75%), rgba(70, 49, 92, 100));
+        background: #151111;
+        color: #f4f3ee;
     }
     
     #postbtn:disabled {
         background-color: #878686;
+        color: #f4f3ee;
         cursor: not-allowed;
     }
 
 
     .post-btn h3{
         font-size: 20px;
+        color: #151111;
     }
     .post-btn i{
         font-size: 10px;
@@ -697,8 +695,49 @@
         margin-left: rem;
     }
 
+    .check {
+        display: none;
+    }
+    .display {
+        width: 100%;
+        height: 100vh; 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    svg {
+        width: 50px;
+    }
+
+    .toggler {
+        width: 60px;
+        height: 20px;
+        margin-top: 8rem;
+        margin-left: 7rem;
+        background: black;
+        border-radius: 999px;
+        box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.05) inset;
+
+    }
+
+    .circle {
+        width: 15px;
+        height: 15px;
+        border-radius: 99px;
+        background: green;
+        box-shadow: 10px 10px 20px rgba(0,0,0,0.05),
+        -10px -10px 30px rgba(0,0,0,0.05) inset;
+        position: absolute;
+        top: 50%;
+        left: 0%;
+        transform: translate(10%, -50%);
+        display: flex;
+        align-items: center;
+    }
+
     .nav-user, .post-btn{
-        color: var(--text-color);
+        color: #151111;
     }
     .nav-user-container{
         display: flex;
@@ -732,6 +771,7 @@
     .nav-usertxt h4 {
         display: flex;
         white-space: nowrap;
+        color: #151111;
         margin: 0;
     }
 
@@ -741,7 +781,7 @@
     }
 
     .user-popup {
-        background: var(--light-container-color);
+        background: #f4f3ee;
         display: none;
         margin: .5rem auto;
         left: 10%;
@@ -758,6 +798,7 @@
         display: block;
     }
     .user-popup h4 {
+        color: #151111;
         font-weight: 600;
         font-size: 16px;
         margin-top: 5px;
@@ -777,19 +818,16 @@
     }
 
 
-    .timeline-main{
-    }
-
     #username{
         margin-left: 10px;
         font-style: var(--big-font-size);
-        color: white;
+        color: #151111;
         font-weight: var(--weight-600);
         font-size: var(--h4-font-size);
     }
     #userPost{
         font-family: var(--body-font);
-        color: #e9ecef;
+        color: #151111;
         background: none;
         font-size: 15px;
         border: none;
@@ -822,7 +860,7 @@
         background: none;
         border: none;
         border-radius: 50%;
-        color: var(--text-muted-color);
+        color: #151111;
         cursor: pointer;
         font-size: 18px;
         margin-right: 10px;
@@ -830,11 +868,14 @@
         transition: all 200ms ease;
       }
       .btn-container button:not(:last-child):hover{
-        color: rgba(224, 221, 221, 0.815);
+        background: linear-gradient(to top right, #c0eefd, #c2aafe, #eec9d1, #dcdace);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
     }
     .btn-container button:not(:last-child).active {
         background-color: transparent;
-        background: linear-gradient(to bottom right, rgba(231, 73, 206, 50%), rgba(188, 47, 237, 75%), rgba(143, 60, 225, 83.75%), rgba(70, 49, 92, 100));
+        background: linear-gradient(to top right, #c0eefd, #c2aafe, #eec9d1, #dcdace);
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
@@ -853,17 +894,17 @@
       
 
     .btn-container #gif {
-        color: #262328;
+        color: white;
         font-size: 9px; 
         margin-bottom: 6px;
         padding: 3px 3px;
         border-radius: 2px;
-        background: var(--text-muted-color);
+        background: #151111;
         transition: all 200ms ease-in-out;
     }
     .btn-container #gif:hover {
         transition: all 200ms ease-in-out;
-        background: linear-gradient(to bottom right, rgba(231, 73, 206, 50%), rgba(188, 47, 237, 75%), rgba(143, 60, 225, 83.75%), rgba(70, 49, 92, 100));
+        background: linear-gradient(to top right, #c0eefd, #c2aafe, #eec9d1, #dcdace);
         
     }
     .btn-container-post {
@@ -877,7 +918,7 @@
         border-radius: 150px;
     }
     .btn-container-post:enabled:hover {
-        background: linear-gradient(to bottom right, rgba(231, 73, 206, 50%), rgba(188, 47, 237, 75%), rgba(143, 60, 225, 83.75%), rgba(70, 49, 92, 100));
+        background: linear-gradient(to top right, #c0eefd, #c2aafe, #eec9d1, #dcdace);
         color: white;
     }
     .btn-container-post:disabled {
@@ -895,7 +936,8 @@
     }
 
     .content-container {
-        background-color: rgb(38, 35, 40);
+
+        border-radius: 15px;
     }
     .content-post #user-img{
         height: 2rem;
@@ -907,9 +949,10 @@
         display: block;
         margin: 15px auto;
         padding: 20px;
-        background: var(--light-container-color);
+        background: #f4f3ee;
         border-radius: 30px;
     }
+    
     .post-header {
         display: flex;
         align-items: center;
@@ -924,7 +967,7 @@
     }
     .post-text{
         padding: 7px;
-        color: var(--text-color);
+        color: #151111;
         font-size: 14px;
         line-height: 1.5;
     }
@@ -969,7 +1012,7 @@
     }
     .profile-container{
         display: flex;
-        background: var(--light-container-color);
+        background: #f4f3ee;
         padding: 1rem;
         border-radius: 0px 0px 30px 30px;
         height: 30%;
@@ -988,6 +1031,7 @@
 
     .profile-container h4{
         font-style: var(--big-font-size);
+        color: #151111;
         margin: 0rem 1rem 0rem;
         align-self: flex-start;
     }
@@ -997,13 +1041,13 @@
     }
     .profile-container h5{
         font-style: var(--big-font-size);
-        color: var(--text-muted-color);
+        color: #151111;
         margin: 0rem 1rem;
         align-self: flex-start;
     }
     .profile-container p{
         font-style: var(--body-font);
-        color: var(--text-color);
+        color: #151111;
         margin: 1rem 1rem;
         align-self: flex-start;
     }
@@ -1017,7 +1061,7 @@
     }
     .profile-follows h5:nth-child(1),.profile-follows h5:nth-child(3) {
         font-style: var(--big-font-size);
-        color: var(--text-color);
+        color: #151111;
         margin-left: 1rem;
     }
 
@@ -1030,7 +1074,7 @@
         width: 100%;
     }
     .search-container{
-        background-color: var(--lighter-container-color);
+        background-color: #f4f3ee;
         display: flex;
         padding: 1rem;
         margin: 0 auto;
@@ -1055,9 +1099,11 @@
     /*------------- RECOMMENDED USER PAGE -------------*/
     .tofollow-container{
         gap: 1.6rem;
-        background-color: var(--light-container-color);
+        background: rgba(255,255,255,0.1);
+        backdrop-filter: blur(7px);
+        box-shadow: 0 25px 45px rgba(0,0,0,0.05);
         display: flex;
-        color: white;
+        color: #151111;
         padding: 1rem;
         margin: 15px auto;
         border-radius: 30px;
@@ -1077,19 +1123,21 @@
     }
 
     .follow-button{
-        background: linear-gradient(to bottom right, rgba(231, 73, 206, 50%), rgba(188, 47, 237, 75%), rgba(143, 60, 225, 83.75%), rgba(70, 49, 92, 100));
+        background: linear-gradient(to top right, #c0eefd, #c2aafe, #eec9d1, #dcdace);
     }
 
     .unfollow-button{
-        background: linear-gradient(to bottom right, rgba(231, 73, 206, 50%), rgba(188, 47, 237, 75%), rgba(143, 60, 225, 83.75%), rgba(70, 49, 92, 100));
+        background: linear-gradient(to top right, #c0eefd, #c2aafe, #eec9d1, #dcdace);
     }
 
 
     /*------------- TREND CONTENT PAGE -------------*/
     .trend-container {
-        background-color: var(--light-container-color);
+        
+        backdrop-filter: blur(10px);
+        box-shadow: 0 25px 45px rgba(0,0,1,0.5);
         display: flex;
-        color: white;
+        color: #151111;
         padding: 1rem;
         margin: 15px auto;
         border-radius: 30px;
@@ -1111,7 +1159,7 @@
 
     .trend-content li{
         font-size: 15px;
-        background: linear-gradient(to right, rgba(231, 73, 206, 50%), rgba(188, 47, 237, 75%), rgba(143, 60, 225, 83.75%), rgba(70, 49, 92, 100));
+        background: #f4f3ee;
         list-style-type: none;
         display: flex;
         align-items: center;
@@ -1131,11 +1179,11 @@
         white-space: nowrap;
         text-decoration: none;
         font-weight: 500;
-        color: white;
+        color: #151111;
     }
 
     .trend-content li p{
-        color: black;
+        color: #f4f3ee;
     }
 
     .trend-content button{
@@ -1143,20 +1191,20 @@
         outline: none;
         background: none;
         margin-right: 5px;
-        color:rgb(100, 95, 95);
+        color: #f4f3ee;
         transition: .3s linear;
         cursor: pointer;
     }
     
     .trend-content button:hover{
-        color:white;
+        color: #151111;
     }
 
     .trend-content button i{
         margin-right: 5px;
     }
     .trend-content .trend p{
-        color: rgb(186, 162, 196);
+        color: #7c547e;
     } 
     
     .more {
