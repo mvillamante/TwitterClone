@@ -21,12 +21,11 @@ async function activeLink() {
         timelineSection.style.display = 'block';
         await displayUserAndFollowingPosts();
     }
+
 }
 
 navlist.forEach((item) =>
     item.addEventListener('click', activeLink));
-
-
 
 //navigation bar: user-popup
 let navUser = document.querySelector('.nav-user');
@@ -111,6 +110,39 @@ textarea.addEventListener('input', checkInput);
 
 var currentToken = localStorage.getItem('token');
 var currentUser = localStorage.getItem('currentUser');
+var following = [];
+var followingCount = 0;
+
+//likes or unlikes the post that was clicked
+async function ToggleLikePost(ID, Likers) {
+    console.log("ToggleLikePost was called");
+    try {
+        // Assuming currentUser is the username of the logged-in user
+        let isLiked = Likers.includes(currentUser);
+
+        const response = await fetch(`http://localhost:3000/api/v1/posts/${ID}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${currentToken}`,
+            },
+            body: JSON.stringify({ action: isLiked ? 'unlike' : 'like' }),
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            console.error(`Error ${isLiked ? 'unliking' : 'liking'} post: ${errorData.message}`);
+            return;
+        }
+
+        console.log(`Post ${isLiked ? 'unliked' : 'liked'} successfully!`);
+        await displayUserAndFollowingPosts();
+    } catch (error) {
+        console.error(`Error ${isLiked ? 'unliking' : 'liking'} post:`, error);
+    }
+}
+//Get this fixed somehow
+
 
 async function displayUsers() {
     const jsonFilePath = '../TEMP/USERS.json'; 
@@ -119,7 +151,6 @@ async function displayUsers() {
         const response = await fetch(jsonFilePath);
         const jsonData = await response.json();
 
-        console.log(jsonData);
         const usersContainer = document.querySelector('.tofollow-user');
         usersContainer.innerHTML = ""; // Clear previous content
 
@@ -147,48 +178,89 @@ async function displayUsers() {
 }
 
 async function followUser(toFollow) {
-    try {
-        const res = await fetch(`http://localhost:3000/api/v1/users/${currentUser}/following/${toFollow}`, {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${currentToken}`
+    if (following.includes(toFollow)){
+        console.log("Already Following or cannot be followed");
+    }else{
+        try {
+            const res = await fetch(`http://localhost:3000/api/v1/users/${currentUser}/following/${toFollow}`, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${currentToken}`
+            }
+            });
+            if (res.ok) {
+            console.log(`Now following: ${toFollow}`);
+            followingCount++;
+            await getFollowing();
+            await displayUserAndFollowingPosts();
+            
+            } else {
+            const errorMessage = await res.text();
+            console.error(`Error following user: ${errorMessage}`);
+            }
+    
+        } catch (error) {
+            console.error('Error following user:', error);
         }
+    }
+
+}
+//unfollows other users
+async function unfollowUser(toUnfollow) {
+    if (!following.includes(toUnfollow)){
+        console.log("Already unFollowed");
+    }else{
+        try {
+            const res = await fetch(`http://localhost:3000/api/v1/users/${currentUser}/following/${toUnfollow}`, {
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${currentToken}`
+            }
+        });
+    
+            if (res.ok) {
+            console.log(`Unfollowed: ${toUnfollow}`);
+            followingCount--;
+            await getFollowing();
+            await displayUserAndFollowingPosts();
+            
+            } else {
+            const errorMessage = await res.text();
+            console.error(`Error unfollowing user: ${errorMessage}`);
+            }
+    
+        } catch (error) {
+            console.error('Error unfollowing user:', error);
+        }       
+    }
+
+}
+//gets following array
+async function getFollowing() {
+    console.log("Getting Following");
+    try {
+        const response = await fetch(`http://localhost:3000/api/v1/users/${currentUser}/following`, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${currentToken}`
+            }
         });
 
-        if (res.ok) {
-        console.log(`Now following: ${toFollow}`);
+        if (response.ok) {
+            const fetchedFollowing = await response.json();
+            following = fetchedFollowing;
+            console.log("This was following: ", following);
         } else {
-        const errorMessage = await res.text();
-        console.error(`Error following user: ${errorMessage}`);
+            console.error('Error fetching following:', response.statusText);
         }
-
     } catch (error) {
-        console.error('Error following user:', error);
+        console.error('Error in getting following:', error);
     }
+    return following;
 }
 
-async function unfollowUser(toUnfollow) {
-    try {
-        const res = await fetch(`http://localhost:3000/api/v1/users/${currentUser}/following/${toUnfollow}`, {
-        method: "DELETE",
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${currentToken}`
-        }
-    });
-
-        if (res.ok) {
-        console.log(`Unfollowed: ${toUnfollow}`);
-        } else {
-        const errorMessage = await res.text();
-        console.error(`Error unfollowing user: ${errorMessage}`);
-        }
-
-    } catch (error) {
-        console.error('Error unfollowing user:', error);
-    }
-}
 
 async function NewPost() {
     var getNewPost = document.getElementById('userPost').value;
@@ -204,9 +276,9 @@ async function NewPost() {
             })
         });
 
-        console.log(await res.text());
+        console.log("Awaiting newpost response: ", await res.text());
         // After posting, refresh the posts
-        await displayUserAndFollowingPosts(); // add as well another function for displaying all following posts
+        await displayUserAndFollowingPosts();
     } catch (error) {
         console.error('Error posting:', error);
     }
@@ -254,9 +326,6 @@ async function displayUserAndFollowingPosts() {
             return;
         }
         const posts = await res.json();
-
-        console.log(posts);
-        console.log(posts.id);
         postsContainer.innerHTML += posts.map(post => `
             <div class="post-container">
                 <div class="content-post">
@@ -272,7 +341,7 @@ async function displayUserAndFollowingPosts() {
                 <div class="btn-container viewpost">
                     <button class="btn" data-active="false"><i class="fa fa-comment" aria-hidden="true"></i></button>
                     <button class="btn" data-active="false"><i class="fa fa-retweet" aria-hidden="true"></i></button>
-                    <button class="btn" data-active="false"><i class="fa fa-heart" aria-hidden="true"></i></button>
+                    <button class="btn" data-active="false"><i class="fa fa-heart" aria-hidden="true" onclick="ToggleLikePost('${post.postId}', '${post.likes}')"></i></button>
                     <button class="btn" data-active="false"><i class="fa fa-share-alt" aria-hidden="true"></i></button>
                     <button class="btn" data-active="false"></button>
                 </div>
@@ -298,7 +367,7 @@ async function displayUserPosts() {
                 unforgettable memories 🚀</p>
                 <h5><i class="fa fa-calendar"></i> Joined 2024</h5>
             <div class="profile-follows">
-                <h5>596</h5>
+                <h5 id="following-count">596</h5>
                 <h5>Following</h5>
                 <h5>709</h5>
                 <h5>Followers</h5>
@@ -321,30 +390,46 @@ async function displayUserPosts() {
 
         const posts = await res.json();
 
-        console.log(posts);
+        //for debugging the weird json files
+        posts.forEach(post => {
+            console.log("Post ID:", post.postId);
+            console.log("Posted By:", post.postedBy);
+            console.log("Content:", post.content);
+            console.log("Date Time Posted:", post.dateTimePosted);
+            console.log("Likes:", post.likes);
+            console.log("--------------");
+          });
+
+        // Display the fetched posts in the userPostContainer
         userPostContainer.innerHTML += posts.map(post => `
-            <div class="post-container">
-                <div class="content-post">
-                    <div class="post-header">
-                        <img src="img/userphoto1.jpg" id="userphoto-img">
-                        <span id="username">${post.postedBy}</span>
-                        <span class="post-time">${post.dateTimePosted}</span>
-                    </div>
-                    <div class="post-text">
-                        ${post.content}
-                    </div>
+        <div class="post-container">
+            <div class="content-post">
+                <div class="post-header">
+                    <img src="img/userphoto1.jpg" id="userphoto-img">
+                    <span id="username">${post.postedBy}</span>
+                    <span class="post-time">${post.dateTimePosted}</span>
                 </div>
-                <div class="btn-container viewpost">
-                    <button class="btn" data-active="false"><i class="fa fa-comment" aria-hidden="true"></i></button>
-                    <button class="btn" data-active="false"><i class="fa fa-retweet" aria-hidden="true"></i></button>
-                    <button class="btn" data-active="false"><i class="fa fa-heart" aria-hidden="true"></i></button>
-                    <button class="btn" data-active="false"><i class="fa fa-share-alt" aria-hidden="true"></i></button>
-                    <button class="btn" data-active="false"></button>
+                <div class="post-text">
+                    ${post.content}
                 </div>
             </div>
+            <div class="btn-container viewpost">
+                <button class="btn" data-active="false"><i class="fa fa-comment" aria-hidden="true"></i></button>
+                <button class="btn" data-active="false"><i class="fa fa-retweet" aria-hidden="true"></i></button>
+                <button class="btn" data-active="false"><i class="fa fa-heart" aria-hidden="true" onclick="ToggleLikePost('${post.postId}', '${post.likes}')"></i></button>
+                <button class="btn" data-active="false"><i class="fa fa-share-alt" aria-hidden="true"></i></button>
+                <button class="btn" data-active="false"></button>
+            </div>
+        </div>
         `).join('');
+
         await displayUsers();
     } catch (error) {
         console.error('Error fetching all following posts:', error);
     }
 }
+
+if (window.location.href.includes("home.html")) {
+    // Call the function when the home page is loaded
+    displayUserAndFollowingPosts();
+  }
