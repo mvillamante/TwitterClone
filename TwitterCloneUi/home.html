@@ -26,16 +26,12 @@
       <div class="nav-container">
         <ul>
           <li class="navlist active">
-            <b></b>
-            <b></b>
             <a href="#" class="nav-btn">
               <i class="fa fa-home"></i>
               <h3>Home</h3>
             </a>
           </li>
           <li class="navlist">
-            <b></b>
-            <b></b>
             <a href="#" class="nav-btn">
               <i class="fa fa-user"></i>
               <h3>Profile</h3>
@@ -78,7 +74,7 @@
         </div>
       </div>
       <div class="user-popup">
-        <h4>Add an existing account</h4>
+        <button id="theme-toggle"><h4>Toggle Theme</h4></button>
         <a href="index.html" id="Log-out-btn"><h4>Log out</h4></a>
       </div>
       <div class="triangle"></div>
@@ -278,6 +274,7 @@
     var currentUser = localStorage.getItem('currentUser');
     document.getElementById("current-user").innerHTML = currentUser;
   </script>
+  <script src="themetoggle.js"></script>
 
 </body>
 </html>
