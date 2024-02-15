@@ -16,10 +16,13 @@ async function activeLink() {
     if (this === navlist[1]) { 
         profileSection.style.display = 'block';
         await displayUserPosts();
+        await updateFollowingCount();
+        await getFollowing();
     }
     else if (this === navlist[0]) { 
         timelineSection.style.display = 'block';
         await displayUserAndFollowingPosts();
+        await getFollowing();
     }
 
 }
@@ -250,6 +253,8 @@ async function getFollowing() {
             const fetchedFollowing = await response.json();
             following = fetchedFollowing;
             console.log("This was following: ", following);
+            localStorage.setItem('followingCount', following.length)
+            updateFollowingCount();
         } else {
             console.error('Error fetching following:', response.statusText);
         }
@@ -258,6 +263,20 @@ async function getFollowing() {
     }
     return following;
 }
+
+//loads following count
+async function loadFollowingCount() {
+    const storedFollowingCount = localStorage.getItem('followingCount');
+    if (storedFollowingCount) {
+        followingCount = parseInt(storedFollowingCount);
+    }
+}
+//concurrently updates the following count
+async function updateFollowingCount() {
+    document.getElementById('followingCountPlaceholder').innerText = following.length;
+    localStorage.setItem('followingCount', following.length);
+}
+loadFollowingCount();
 
 async function NewPost() {
     var getNewPost = document.getElementById('userPost').value;
@@ -367,7 +386,7 @@ async function displayUserPosts() {
     const userPostContainer = document.querySelector('.profile-main');
     userPostContainer.innerHTML = `
         <div class="header-pic">
-            <img src="img/vespera-header2.jpg">
+            <img src="img/default-header.jpg">
         </div>
         <div class="profile-container">
             <img src="img/user-icon-black.png">
@@ -376,7 +395,7 @@ async function displayUserPosts() {
                 unforgettable memories 🚀</p>
                 <h5><i class="fa fa-calendar"></i> Joined 2024</h5>
             <div class="profile-follows">
-                <h5 id="following-count">596</h5>
+                <h5 id="followingCountPlaceholder"></h5>
                 <h5>Following</h5>
                 <h5>709</h5>
                 <h5>Followers</h5>
