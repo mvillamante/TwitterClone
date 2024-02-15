@@ -54,6 +54,7 @@ viewpost.addEventListener('click', function() {
     }
 });
 
+// For Trends
 // script when icon down/up is clicked
 const moreIcon = document.querySelectorAll('.fas.fa-caret-down');
 moreIcon.forEach(icon => {
@@ -73,6 +74,37 @@ moreIcon.forEach(icon => {
     });
 });
 
+// If user not interested
+const notIntbtn = document.querySelectorAll('.down');
+notIntbtn.forEach(button => {
+    button.addEventListener('click', function() {
+        const btnEvent = this.closest('.btnEvent');
+        btnEvent.style.display = 'none';
+    });
+});
+
+// If user clicks "ekis" button
+const ekisBtn = document.querySelectorAll('.ekis');
+ekisBtn.forEach(button => {
+    button.addEventListener('click', function(event) {
+        event.preventDefault();
+
+        // Show the popup
+        const popup = document.createElement('div');
+        popup.classList.add('popup');
+        popup.innerHTML = 'Thank you for your feedback';
+        document.body.appendChild(popup);
+        
+        // Hides the btnEvent
+        const btnEvent = this.closest('.btnEvent');
+        btnEvent.style.display = 'none';
+
+        // Hides pop up
+        setTimeout(() => {
+            document.body.removeChild(popup);
+        }, 1500);
+    });
+});
 
 const buttons = document.querySelectorAll('.btn-container.viewpost .btn');
 
