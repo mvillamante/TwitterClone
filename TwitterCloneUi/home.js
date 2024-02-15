@@ -55,7 +55,7 @@ viewpost.addEventListener('click', function() {
 });
 
 // script when icon down/up is clicked
-const moreIcon = document.querySelectorAll('.fa-solid.fa-caret-down');
+const moreIcon = document.querySelectorAll('.fas.fa-caret-down');
 moreIcon.forEach(icon => {
     icon.addEventListener('click', function() {
         // changes the icon
@@ -398,8 +398,7 @@ async function displayUserAndFollowingPosts() {
                     <button class="btn" data-active="false"><i class="fa fa-comment" aria-hidden="true"></i></button>
                     <button class="btn" data-active="false"><i class="fa fa-retweet" aria-hidden="true"></i></button>
                     <button class="btn" data-active="false">
-                        <i class="fa fa-heart" aria-hidden="true" onclick="ToggleLikePost('${post.postId}', '${post.likes}')"></i>
-                        <span id="like-count">${post.likes.length}</span>
+                        <i class="fa fa-heart" aria-hidden="true" onclick="ToggleLikePost('${post.postId}', '${post.likes}')"> ${post.likes.length}</i>
                     </button>
                     <button class="btn" data-active="false"><i class="fa fa-share-alt" aria-hidden="true"></i></button>
                     <button class="btn" data-active="false"></button>
@@ -477,8 +476,8 @@ async function displayUserPosts() {
                 <button class="btn" data-active="false"><i class="fa fa-comment" aria-hidden="true"></i></button>
                 <button class="btn" data-active="false"><i class="fa fa-retweet" aria-hidden="true"></i></button>
                 <button class="btn" data-active="false">
-                    <i class="fa fa-heart" aria-hidden="true" onclick="ToggleLikePost('${post.postId}', '${post.likes}')"></i>
-                    <span id="like-count">${post.likes.length}</span>
+                    <i class="fa fa-heart" aria-hidden="true" onclick="ToggleLikePost('${post.postId}', '${post.likes}')"> ${post.likes.length}</i>
+                    
                 </button>
                 <button class="btn" data-active="false"><i class="fa fa-share-alt" aria-hidden="true"></i></button>
                 <button class="btn" data-active="false"></button>
