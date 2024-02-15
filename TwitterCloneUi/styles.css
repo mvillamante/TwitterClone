@@ -286,7 +286,7 @@
     .intro-logo h4 {
         font-size: 1rem;
         letter-spacing: -0.5px;
-        color: var(--fontcolor-1);
+        color: var(--color-lightest-white);
     }
 
     .heading h2 {
