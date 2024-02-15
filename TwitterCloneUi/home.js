@@ -120,7 +120,7 @@ var followingCount = 0;
 var follower = [];
 var followerCount = 0;
 
-//likes or unlikes the post that was clicked
+/* -------------Likes Portion------------- */
 async function ToggleLikePost(ID, Likers) {
     console.log("ToggleLikePost was called");
     try {
@@ -144,12 +144,13 @@ async function ToggleLikePost(ID, Likers) {
 
         console.log(`Post ${isLiked ? 'unliked' : 'liked'} successfully!`);
         await displayUserAndFollowingPosts();
+        await displayUserPosts();
     } catch (error) {
         console.error(`Error ${isLiked ? 'unliking' : 'liking'} post:`, error);
     }
 }
 
-
+/* -------------Display Users in Follow------------- */
 async function displayUsers() {
     const usersContainer = document.querySelector('.tofollow-user');
     usersContainer.innerHTML = ""; // Clear previous content
@@ -182,6 +183,8 @@ async function displayUsers() {
     }
 }
 
+
+/* -------------Following Section------------- */
 async function followUser(toFollow) {
     if (following.includes(toFollow)){
         console.log("Already Following or cannot be followed");
@@ -284,6 +287,7 @@ loadFollowingCount();
 
 //loads and updates follower count
 async function loadFollowerCount(){
+    follower = [];
     const res = await fetch("http://localhost:3000/api/allUsers");
     const allUsernames = await res.json();
 
@@ -300,6 +304,8 @@ async function loadFollowerCount(){
     document.getElementById('followerCountPlaceholder').innerText = follower.length;
 }
 
+
+/* -------------Display Post Section------------- */
 async function NewPost() {
     var getNewPost = document.getElementById('userPost').value;
     try {
@@ -382,7 +388,7 @@ async function displayUserAndFollowingPosts() {
                     <div class="post-header">
                         <img src="img/user-icon-black.png" id="userphoto-img">
                         <span id="username">${post.postedBy}</span>
-                        <span id="timePosted">${post.dateTimePosted}</span>
+                        <span class="post-time">${post.dateTimePosted}</span>
                     </div>
                     <div class="post-text">
                         ${post.content}
@@ -391,7 +397,10 @@ async function displayUserAndFollowingPosts() {
                 <div class="btn-container viewpost">
                     <button class="btn" data-active="false"><i class="fa fa-comment" aria-hidden="true"></i></button>
                     <button class="btn" data-active="false"><i class="fa fa-retweet" aria-hidden="true"></i></button>
-                    <button class="btn" data-active="false"><i class="fa fa-heart" aria-hidden="true" onclick="ToggleLikePost('${post.postId}', '${post.likes}')"></i></button>
+                    <button class="btn" data-active="false">
+                        <i class="fa fa-heart" aria-hidden="true" onclick="ToggleLikePost('${post.postId}', '${post.likes}')"></i>
+                        <span id="like-count">${post.likes.length}</span>
+                    </button>
                     <button class="btn" data-active="false"><i class="fa fa-share-alt" aria-hidden="true"></i></button>
                     <button class="btn" data-active="false"></button>
                 </div>
@@ -467,7 +476,10 @@ async function displayUserPosts() {
             <div class="btn-container viewpost">
                 <button class="btn" data-active="false"><i class="fa fa-comment" aria-hidden="true"></i></button>
                 <button class="btn" data-active="false"><i class="fa fa-retweet" aria-hidden="true"></i></button>
-                <button class="btn" data-active="false"><i class="fa fa-heart" aria-hidden="true" onclick="ToggleLikePost('${post.postId}', '${post.likes}')"></i></button>
+                <button class="btn" data-active="false">
+                    <i class="fa fa-heart" aria-hidden="true" onclick="ToggleLikePost('${post.postId}', '${post.likes}')"></i>
+                    <span id="like-count">${post.likes.length}</span>
+                </button>
                 <button class="btn" data-active="false"><i class="fa fa-share-alt" aria-hidden="true"></i></button>
                 <button class="btn" data-active="false"></button>
             </div>

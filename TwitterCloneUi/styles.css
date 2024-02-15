@@ -948,6 +948,7 @@
     }
     
     .post-header {
+        color: var(--font-text-muted-color);
         display: flex;
         align-items: center;
     }
@@ -962,19 +963,23 @@
     }
     .post-header #timePosted{
         color: #3432326c;
-
     }
 
-    .post-text{
+    .post-text {
         padding: 7px;
         color: var(--bgcolor-2);
         font-size: 14px;
         line-height: 1.5;
+        word-wrap: break-word; 
+        max-width: 100%;
+        box-sizing: border-box; 
     }
+
     #postbtn i{
         display: none;
         transition: all 200ms ease;
     }
+
     .bold-text{
         font-weight: 800;
         color: var(--bgcolor-2);
@@ -1145,10 +1150,11 @@
         font-weight: bold;
         text-decoration: underline;
         margin-bottom: 5px;
-        color: rgb(0, 0, 0);
+        color: var(--fontcolor-2);
     }
     
     .follow-button, .unfollow-button {
+        color: var(--fontcolor-2);
         padding: 3px 7px;
         font-size: 14px;
         cursor: pointer;
