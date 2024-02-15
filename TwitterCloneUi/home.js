@@ -157,9 +157,6 @@ async function displayUsers() {
         for (const username in allUsernames) {
             if (allUsernames.hasOwnProperty(username)) {
                 const user = allUsernames[username];
-
-
-
                 usersContainer.innerHTML += `
                 <div class="user-container">
                     <img src="img/user-icon-black.png" id="user-img" class="user-follow-pfp">
@@ -172,6 +169,7 @@ async function displayUsers() {
                 `;
             };
         };
+            
     } catch (error) {
         console.error('Error fetching or parsing JSON data:', error);
     }
@@ -261,7 +259,6 @@ async function getFollowing() {
     return following;
 }
 
-
 async function NewPost() {
     var getNewPost = document.getElementById('userPost').value;
     try {
@@ -326,8 +323,8 @@ async function displayUserAndFollowingPosts() {
             return;
         }
         const posts = await res.json();
-        
-        //for debugging the weird json files
+
+        // for debugging
         // posts.forEach(post => {
         //     console.log("Post ID:", post.postId);
         //     console.log("Posted By:", post.postedBy);
@@ -411,7 +408,6 @@ async function displayUserPosts() {
         //     console.log("Likes:", post.likes);
         //     console.log("--------------");
         //   });
-
 
         posts.sort((a, b) => new Date(b.dateTimePosted) - new Date(a.dateTimePosted));
         // Display the fetched posts in the userPostContainer
