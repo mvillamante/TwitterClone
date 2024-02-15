@@ -18,11 +18,13 @@ async function activeLink() {
         await displayUserPosts();
         await updateFollowingCount();
         await getFollowing();
+        await loadFollowerCount();
     }
     else if (this === navlist[0]) { 
         timelineSection.style.display = 'block';
         await displayUserAndFollowingPosts();
         await getFollowing();
+        await loadFollowerCount();
     }
 
 }
@@ -115,6 +117,8 @@ var currentToken = localStorage.getItem('token');
 var currentUser = localStorage.getItem('currentUser');
 var following = [];
 var followingCount = 0;
+var follower = [];
+var followerCount = 0;
 
 //likes or unlikes the post that was clicked
 async function ToggleLikePost(ID, Likers) {
@@ -278,6 +282,24 @@ async function updateFollowingCount() {
 }
 loadFollowingCount();
 
+//loads and updates follower count
+async function loadFollowerCount(){
+    const res = await fetch("http://localhost:3000/api/allUsers");
+    const allUsernames = await res.json();
+
+    for (const username in allUsernames){
+        if(allUsernames.hasOwnProperty(username)){
+            const user = allUsernames[username];
+            if(user.following.includes(currentUser)){
+                console.log(currentUser, "is followed by", user.username);
+                follower.push(user.username);
+            }
+        }
+    }
+    console.log("Follower Length",follower.length);
+    document.getElementById('followerCountPlaceholder').innerText = follower.length;
+}
+
 async function NewPost() {
     var getNewPost = document.getElementById('userPost').value;
     try {
@@ -397,7 +419,7 @@ async function displayUserPosts() {
             <div class="profile-follows">
                 <h5 id="followingCountPlaceholder"></h5>
                 <h5>Following</h5>
-                <h5>709</h5>
+                <h5 id="followerCountPlaceholder"></h5>
                 <h5>Followers</h5>
             </div>
         </div>
