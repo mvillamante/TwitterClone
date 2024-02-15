@@ -958,7 +958,13 @@
     }
     .post-header #username {
         text-align: center;
+        margin-right: 10px;
     }
+    .post-header #timePosted{
+        color: #3432326c;
+
+    }
+
     .post-text{
         padding: 7px;
         color: var(--bgcolor-2);
@@ -1092,38 +1098,65 @@
 
 
     /*------------- RECOMMENDED USER PAGE -------------*/
-    .tofollow-container{
+    .tofollow-container {
         gap: 1.6rem;
         background: var(--side-content-container-color);
         backdrop-filter: blur(7px);
-        box-shadow: 0 25px 45px rgba(0,0,0,0.09);
+        box-shadow: 0 25px 45px rgba(0, 0, 0, 0.09);
         display: flex;
         color: var(--fontcolor-2);
         padding: 1rem;
         margin: 15px auto;
         border-radius: 30px;
-        height: 35vh;
+        height: 35vh; 
         flex-direction: column;
+        overflow-y: auto; 
     }
 
-    .user-container{
+    .tofollow-container::-webkit-scrollbar {
+        width: 10px;
+    }
+    
+    .tofollow-container::-webkit-scrollbar-thumb {
+        background-color: var(--scrollbar-thumb-color);
+        border-radius: 5px;
+    }
+    
+    .tofollow-container::-webkit-scrollbar-track {
+        background-color: var(--scrollbar-track-color); 
+    }
+    
+    .user-container {
+        margin-bottom: 10px;
         display: flex;
         flex-direction: row;
-        justify-content: flex-start;
+        justify-content: space-between;
+        align-items: center;
     }
-
-    .user-post-pfp{
-        height: 2rem;
+    
+    #user-img {
         width: 2rem;
+        height: 2rem;
+        margin-right: 10px;
     }
-
-    .follow-button{
+    
+    .user-name {
+        font-size: 16px;
+        font-weight: bold;
+        text-decoration: underline;
+        margin-bottom: 5px;
+        color: rgb(0, 0, 0);
+    }
+    
+    .follow-button, .unfollow-button {
+        padding: 3px 7px;
+        font-size: 14px;
+        cursor: pointer;
+        border: 2px solid rgba(255, 255, 255, 20%);
+        border-radius: 3px;
         background: linear-gradient(to top right, var(--gradient-color1), var(--gradient-color2), var(--gradient-color3), var(--gradient-color4));
     }
 
-    .unfollow-button{
-        background: linear-gradient(to top right, var(--gradient-color1), var(--gradient-color2), var(--gradient-color3), var(--gradient-color4));
-    }
 
 
     /*------------- TREND CONTENT PAGE -------------*/

@@ -67,4 +67,10 @@ function getFollowingUsernames(usernameOfFollower) {
   return user.following;
 }
 
-export default { createUser, followUser, getFollowingUsernames, unfollowUser };
+function getUsernames(){
+  console.log("Users dictionary content:")
+  console.log(users)
+  return Object(users)
+}
+
+export default { createUser, followUser, getFollowingUsernames, unfollowUser, getUsernames };

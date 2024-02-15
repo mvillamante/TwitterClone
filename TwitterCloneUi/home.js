@@ -141,37 +141,37 @@ async function ToggleLikePost(ID, Likers) {
         console.error(`Error ${isLiked ? 'unliking' : 'liking'} post:`, error);
     }
 }
-//Get this fixed somehow
 
 
 async function displayUsers() {
-    const jsonFilePath = '../TEMP/USERS.json'; 
+    const usersContainer = document.querySelector('.tofollow-user');
+    usersContainer.innerHTML = ""; // Clear previous content
+    console.log("I was called")
     try {
         // Fetch JSON data asynchronously
-        const response = await fetch(jsonFilePath);
-        const jsonData = await response.json();
+        const res = await fetch("http://localhost:3000/api/allUsers");
+        const allUsernames = await res.json();
+        console.log("Full Response:", allUsernames); // for debugging
 
-        const usersContainer = document.querySelector('.tofollow-user');
-        usersContainer.innerHTML = ""; // Clear previous content
+        // Iterate over each user in the dictionary
+        for (const username in allUsernames) {
+            if (allUsernames.hasOwnProperty(username)) {
+                const user = allUsernames[username];
 
-        // Loop through each user in the JSON data
-        for (const username in jsonData) {
-            if (jsonData.hasOwnProperty(username)) {
-                const user = jsonData[username];
 
-                // Create HTML elements for each user
+
                 usersContainer.innerHTML += `
-                    <div class="user-container">
-                    <img src="img/user-icon-black.png"id="user-img" class="user-post-pfp"> 
-                        <div class="user-name">${user.username}</div>
-                        <div class="buttons-container">
-                            <button class="follow-button" onclick="followUser('${user.username}')">Follow</button>
-                            <button class="unfollow-button" onclick="unfollowUser('${user.username}')">Unfollow</button>
-                        </div>
+                <div class="user-container">
+                    <img src="img/user-icon-black.png" id="user-img" class="user-follow-pfp">
+                    <div class="user-name">${user.username}</div>
+                    <div class="buttons-container">
+                        <button class="follow-button" onclick="followUser('${user.username}')">Follow</button>
+                        <button class="unfollow-button" onclick="unfollowUser('${user.username}')">Unfollow</button>
                     </div>
+                </div>
                 `;
-            }
-        }
+            };
+        };
     } catch (error) {
         console.error('Error fetching or parsing JSON data:', error);
     }
@@ -326,11 +326,23 @@ async function displayUserAndFollowingPosts() {
             return;
         }
         const posts = await res.json();
+        
+        //for debugging the weird json files
+        // posts.forEach(post => {
+        //     console.log("Post ID:", post.postId);
+        //     console.log("Posted By:", post.postedBy);
+        //     console.log("Content:", post.content);
+        //     console.log("Date Time Posted:", post.dateTimePosted);
+        //     console.log("Likes:", post.likes);
+        //     console.log("--------------");
+        //   });
+
+        posts.sort((a, b) => new Date(b.dateTimePosted) - new Date(a.dateTimePosted));
         postsContainer.innerHTML += posts.map(post => `
             <div class="post-container">
                 <div class="content-post">
                     <div class="post-header">
-                        <img src="img/userphoto1.jpg" id="userphoto-img">
+                        <img src="img/user-icon-black.png" id="userphoto-img">
                         <span id="username">${post.postedBy}</span>
                         <span id="timePosted">${post.dateTimePosted}</span>
                     </div>
@@ -391,21 +403,23 @@ async function displayUserPosts() {
         const posts = await res.json();
 
         //for debugging the weird json files
-        posts.forEach(post => {
-            console.log("Post ID:", post.postId);
-            console.log("Posted By:", post.postedBy);
-            console.log("Content:", post.content);
-            console.log("Date Time Posted:", post.dateTimePosted);
-            console.log("Likes:", post.likes);
-            console.log("--------------");
-          });
+        // posts.forEach(post => {
+        //     console.log("Post ID:", post.postId);
+        //     console.log("Posted By:", post.postedBy);
+        //     console.log("Content:", post.content);
+        //     console.log("Date Time Posted:", post.dateTimePosted);
+        //     console.log("Likes:", post.likes);
+        //     console.log("--------------");
+        //   });
 
+
+        posts.sort((a, b) => new Date(b.dateTimePosted) - new Date(a.dateTimePosted));
         // Display the fetched posts in the userPostContainer
         userPostContainer.innerHTML += posts.map(post => `
         <div class="post-container">
             <div class="content-post">
                 <div class="post-header">
-                    <img src="img/userphoto1.jpg" id="userphoto-img">
+                    <img src="img/user-icon-black.png" id="userphoto-img">
                     <span id="username">${post.postedBy}</span>
                     <span class="post-time">${post.dateTimePosted}</span>
                 </div>
