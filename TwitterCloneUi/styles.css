@@ -50,6 +50,13 @@
     --home-content-container-color: #f4f3ee;
     --font-text-muted-color: #bebbbb;
 
+    /*---------- To Follow Btns ----------*/
+    --followbtn: #c7defe;
+
+    /*---------- Pop-Up ----------*/
+    --poptxt: #151111;
+    --popbkg: #f4f3ee;
+
     /*======= Font and typography =====*/
     --body-font: 'Open Sans', sans-serif;
     --big-font-size: 3rem;
@@ -101,6 +108,13 @@
     /*---------- Profile ----------*/
     --home-content-container-color: #3C3535;
     --font-text-muted-color: #606060;
+    
+    /*---------- To Follow Btns ----------*/
+    --followbtn: #1f0e2b;
+    
+    /*---------- Pop-Up ----------*/
+    --popbkg: #151111;
+    --poptxt: #f4f3ee;
 }
 
 /*=============== BASE ===============*/
@@ -1105,18 +1119,15 @@
 
     /*------------- RECOMMENDED USER PAGE -------------*/
     .tofollow-container {
-        gap: 1.6rem;
         background: var(--side-content-container-color);
-        backdrop-filter: blur(7px);
-        box-shadow: 0 25px 45px rgba(0, 0, 0, 0.09);
+        box-shadow: 0 25px 45px rgba(0,0,0,.12);
         display: flex;
         color: var(--fontcolor-2);
         padding: 1rem;
         margin: 15px auto;
         border-radius: 30px;
-        height: 35vh; 
-        flex-direction: column;
-        overflow-y: auto; 
+        height: auto;
+        flex-wrap: wrap;
     }
 
     .tofollow-container::-webkit-scrollbar {
@@ -1131,13 +1142,31 @@
     .tofollow-container::-webkit-scrollbar-track {
         background-color: var(--scrollbar-track-color); 
     }
-    
-    .user-container {
-        margin-bottom: 10px;
+
+    .tofollow-header {
+        width: 100%;
+        height: auto;
+        padding: 15px auto 0px 15px;
+    }
+
+    .tofollow-header h3{
         display: flex;
-        flex-direction: row;
-        justify-content: space-between;
         align-items: center;
+        justify-content: space-between;
+    }
+
+    .user-container {
+        font-size: 15px;
+        background: var(--trend-content-li-color);
+        list-style-type: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 10px 0px 0px 0px;
+        padding: 0px 10px 0px 5px;
+        border-radius: 10px;
+        height: 45px;
+        flex-direction: row;
     }
     
     #user-img {
@@ -1147,21 +1176,34 @@
     }
     
     .user-name {
-        font-size: 16px;
+        font-size: 12px;
         font-weight: bold;
         text-decoration: underline;
-        margin-bottom: 5px;
         color: var(--fontcolor-2);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: calc(14 * 2.5%);
+        flex-grow: 1;
     }
     
     .follow-button, .unfollow-button {
         color: var(--fontcolor-2);
-        padding: 3px 7px;
-        font-size: 14px;
+        padding: 3px 5px;
+        font-size: 13px;
         cursor: pointer;
-        border: 2px solid rgba(255, 255, 255, 20%);
+        border: 1px solid rgba(255, 255, 255, 20%);
         border-radius: 3px;
-        background: linear-gradient(to top right, var(--gradient-color1), var(--gradient-color2), var(--gradient-color3), var(--gradient-color4));
+        background: linear-gradient(to top right, var(--gradient-color4), var(--gradient-color3), var(--gradient-color2), var(--gradient-color1));
+        transition: background-color 0.3s, color 0.3s;
+    }
+    
+    .follow-button:hover, .unfollow-button:hover {
+        background: var(--followbtn);
+        color: var(--hover-color);
+    }
+
+    .follow-button:active, .unfollow-button:active {
+        transform: translateY(1px);
     }
 
 
@@ -1234,6 +1276,10 @@
         color: var(--fontcolor-2);
     }
 
+    .trend-content button:active{
+        color: red;
+    }
+
     .trend-content button i{
         margin-right: 5px;
     }
@@ -1258,6 +1304,18 @@
         text-align: center;
         transition: .3s linear;
         cursor: pointer;
+    }
+
+    .popup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: var(--popbkg);
+        color: var(--poptxt);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
 
 /*=============== BREAKPOINTS ===============*/
