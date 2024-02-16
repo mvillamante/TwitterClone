@@ -475,9 +475,9 @@ async function displayUserPosts() {
                 unforgettable memories 🚀</p>
                 <h5><i class="fa fa-calendar"></i> Joined 2024</h5>
             <div class="profile-follows">
-                <h5 id="followingCountPlaceholder"></h5>
+                <h5 id="followingCountPlaceholder">0</h5>
                 <h5>Following</h5> 
-                <h5 id="followerCountPlaceholder"></h5>
+                <h5 id="followerCountPlaceholder">0</h5>
                 <h5>Followers</h5>
             </div>
         </div>
