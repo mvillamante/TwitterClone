@@ -188,7 +188,7 @@ async function ToggleLikePost(ID, Likers) {
 
 /* -------------Display Users in Follow------------- */
 async function displayUsers() {
-    const usersContainer = document.querySelector('.tofollow-header');
+    const usersContainer = document.querySelector('.tofollow-users');
     usersContainer.innerHTML = ""; // Clear previous content
     console.log("I was called")
     try {
@@ -420,13 +420,15 @@ async function displayUserAndFollowingPosts() {
         //   });
 
         posts.sort((a, b) => new Date(b.dateTimePosted) - new Date(a.dateTimePosted));
+        
         postsContainer.innerHTML += posts.map(post => `
             <div class="post-container">
                 <div class="content-post">
                     <div class="post-header">
                         <img src="img/user-icon-black.png" id="userphoto-img">
                         <span id="username">${post.postedBy}</span>
-                        <span class="post-time">${post.dateTimePosted}</span>
+                        <span class="post-time">${new Date(post.dateTimePosted).toLocaleString()}
+                    </span>
                     </div>
                     <div class="post-text">
                         ${post.content}
@@ -443,6 +445,7 @@ async function displayUserAndFollowingPosts() {
                 </div>
             </div>
         `).join('');
+
         console.log("Display Post was successful");
         await displayUsers();
         registerButtonEventListeners();
@@ -517,7 +520,7 @@ async function displayUserPosts() {
                 <div class="post-header">
                     <img src="img/user-icon-black.png" id="userphoto-img">
                     <span id="username">${post.postedBy}</span>
-                    <span class="post-time">${post.dateTimePosted}</span>
+                    <span class="post-time">${new Date(post.dateTimePosted).toLocaleString()}</span>
                 </div>
                 <div class="post-text">
                     ${post.content}
