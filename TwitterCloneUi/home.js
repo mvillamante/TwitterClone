@@ -19,12 +19,14 @@ async function activeLink() {
         await updateFollowingCount();
         await getFollowing();
         await loadFollowerCount();
+        checkProfileMainDisplay();
     }
     else if (this === navlist[0]) { 
         timelineSection.style.display = 'block';
         await displayUserAndFollowingPosts();
         await getFollowing();
         await loadFollowerCount();
+        checkProfileMainDisplay();
     }
 
 }
@@ -42,17 +44,21 @@ navUser.onclick = function(){
     showTriangle.classList.toggle('active')
 }
 
-//interactive button container
+// Interactive button container
 let viewpost = document.querySelector('.btn-container.viewpost');
 
-viewpost.addEventListener('click', function() {
+viewpost.addEventListener('click', function(event) {
     viewpost.classList.toggle('active');
-    if (viewpost.classList.contains('active')) {
-        viewpost.style.pointerEvents = 'none';
-    } else {
-        viewpost.style.pointerEvents = 'auto'; 
+
+    if (!event.target.classList.contains('fa-heart')) {
+        if (viewpost.classList.contains('active')) {
+            viewpost.style.pointerEvents = 'none';
+        } else {
+            viewpost.style.pointerEvents = 'auto'; 
+        }
     }
 });
+
 
 // For Trends
 // script when icon down/up is clicked
@@ -106,19 +112,18 @@ ekisBtn.forEach(button => {
     });
 });
 
-const buttons = document.querySelectorAll('.btn-container.viewpost .btn');
+function registerButtonEventListeners() {
+    const buttons = document.querySelectorAll('.btn-container.viewpost .btn');
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            // Toggle the active state of the clicked button
+            button.dataset.active = button.dataset.active === 'false' ? 'true' : 'false';
+            button.classList.toggle('active');
+        });
+    });
+}
 
-buttons.forEach((button) => {
-  button.addEventListener('click', () => {
-    if (button.dataset.active === 'false') {
-      button.dataset.active = 'true';
-      button.classList.add('active');
-    } else {
-      button.dataset.active = 'false';
-      button.classList.remove('active');
-    }
-  });
-});
+  
 
 
 //check input
@@ -175,8 +180,11 @@ async function ToggleLikePost(ID, Likers) {
         }
 
         console.log(`Post ${isLiked ? 'unliked' : 'liked'} successfully!`);
+
+
         await displayUserAndFollowingPosts();
         await displayUserPosts();
+
     } catch (error) {
         console.error(`Error ${isLiked ? 'unliking' : 'liking'} post:`, error);
     }
@@ -438,9 +446,22 @@ async function displayUserAndFollowingPosts() {
             </div>
         `).join('');
         console.log("Display Post was successful");
+
+        registerButtonEventListeners();
         await displayUsers();
     } catch (error) {
         console.error('Error fetching posts:', error);
+    }
+}
+
+//hides or unhides the post button on navbar 
+function checkProfileMainDisplay() {
+    const navPostButton = document.getElementById('navPost');
+    const userPostContainer = document.querySelector('.profile-main');
+    if (userPostContainer.style.display !== 'none') {
+        navPostButton.style.display = 'none';
+    } else {
+        navPostButton.style.display = 'block';
     }
 }
 
@@ -458,14 +479,15 @@ async function displayUserPosts() {
                 <h5><i class="fa fa-calendar"></i> Joined 2024</h5>
             <div class="profile-follows">
                 <h5 id="followingCountPlaceholder"></h5>
-                <h5>Following</h5>
+                <h5>Following</h5> 
                 <h5 id="followerCountPlaceholder"></h5>
                 <h5>Followers</h5>
             </div>
         </div>
     `; // Clear previous posts
 
-    try {
+
+    try {   
         const res = await fetch(`http://localhost:3000/api/v1/posts?username=${currentUser}`, {
             headers: {
                 'Authorization': `Bearer ${currentToken}`
@@ -517,7 +539,9 @@ async function displayUserPosts() {
         </div>
         `).join('');
 
+        registerButtonEventListeners();
         await displayUsers();
+
     } catch (error) {
         console.error('Error fetching all following posts:', error);
     }

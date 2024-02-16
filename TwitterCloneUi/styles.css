@@ -1,7 +1,8 @@
 /*=============== GOOGLE FONTS ===============*/
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+
 
 /*=============== VARIABLES CSS ===============*/
 :root {
@@ -550,7 +551,7 @@
         background: var(--navbar-blur-bgcolor);
         backdrop-filter: blur(50px);
         width: 300px;
-        transition: all 1s ease;
+        transition: all .5s ease;
         height: 100vh;
     }
     .home-container .top{
@@ -609,9 +610,6 @@
         border-bottom-left-radius: 50px;
     }
     .nav-container ul li.active{
-        /*ADJUST GRADIENT*/
-        /*background: linear-gradient(to bottom left, var(--gradient-color1), var(--gradient-color2), var(--gradient-color3), var(--gradient-color4)); 
-        */
         background: var(--bgcolor-1);
     }
     .nav-container ul li.active b:nth-child(1),
@@ -642,7 +640,7 @@
         text-decoration: none;
         color: var(--bgcolor-1);
         font-size: 30px;
-        transition: transform 300ms ease;
+        transition: all 300ms ease;
     }
     .nav-container ul li i{
         position: relative;
@@ -652,7 +650,7 @@
         line-height: 60px;
         text-align: center;
         margin-right: 5px;
-        font-size: 20px;
+        font-size: 25px;
     }
     .nav-container ul li h3{
         font-size: 23px;
@@ -722,11 +720,8 @@
         cursor: not-allowed;
     }
 
-    .post-btn h3{
+    .post-btn h3, .post-btn i{
         font-size: 20px;
-    }
-    .post-btn i{
-        font-size: 10px;
     }
     #postbtn:enabled:hover, .outer-btn:hover{
         transform: scale(1.03);
@@ -897,7 +892,7 @@
         background-clip: text;
         color: transparent;
     }
-    .btn-container button:not(:last-child).active {
+    .btn-container.btn-container.viewpost button:not(:last-child).active {
         background-color: transparent;
         background: linear-gradient(to top right, var(--gradient-color1), var(--gradient-color2), var(--gradient-color3), var(--gradient-color4));
         -webkit-background-clip: text;
@@ -999,23 +994,6 @@
         font-weight: 800;
         color: var(--bgcolor-2);
     }
-    .post-media {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 10px; 
-        margin: 15px auto;
-        transition: 500ms ease-in-out;
-        align-items: center;
-    }
-    .post-media img {
-        max-width: 100%; 
-        height: 100%; 
-        border-radius: 25px;
-        transition: 500ms ease-in-out;
-    }
-    .post-media img:hover{
-        transform: scale(1.03);
-    }
 
     /*------------- PROFILE PAGE -------------*/
     .profile-main{
@@ -1110,7 +1088,7 @@
     .search-container input {
         padding: 1rem;
         background: transparent;
-        color: var(--color-lightest-white);
+        color: var(--fontcolor-2);
         height: 27px;
         width: 225px;
         display: inline-block;
