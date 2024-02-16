@@ -123,9 +123,6 @@ function registerButtonEventListeners() {
     });
 }
 
-  
-
-
 //check input
 function checkInput() {
     var textarea = document.getElementById('userPost');
@@ -189,6 +186,7 @@ async function ToggleLikePost(ID, Likers) {
         console.error(`Error ${isLiked ? 'unliking' : 'liking'} post:`, error);
     }
 }
+
 
 /* -------------Display Users in Follow------------- */
 async function displayUsers() {

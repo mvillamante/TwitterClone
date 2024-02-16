@@ -23,6 +23,11 @@
     --gradient-color3: #c2aafe;
     --gradient-color4: #c0eefd;
 
+    --reverse-gradient-color1: #854F6C;
+    --reverse-gradient-color2: #522B5B;
+    --reverse-gradient-color3: #2B124C;
+    --reverse-gradient-color4: #190D19;
+
     /*---------- Intro ----------*/
     --fontcolor-1: #000000;
     --fontcolor-2: #151111;
@@ -81,6 +86,11 @@
     --gradient-color2: #522B5B;
     --gradient-color3: #2B124C;
     --gradient-color4: #190D19;
+
+    --reverse-gradient-color1: #dcdace;
+    --reverse-gradient-color2: #eec9d1;
+    --reverse-gradient-color3: #c2aafe;
+    --reverse-gradient-color4: #c0eefd;
 
     /*---------- Intro ----------*/
     --fontcolor-1: #fff;
@@ -887,14 +897,15 @@
         transition: all 200ms ease;
       }
       .btn-container button:not(:last-child):hover{
-        background: linear-gradient(to top right, var(--gradient-color1), var(--gradient-color2), var(--gradient-color3), var(--gradient-color4));
+        background: linear-gradient(to top right, var(--reverse-gradient-color1), var(--reverse-gradient-color2), var(--reverse-gradient-color3), var(--reverse-gradient-color4));
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
     }
-    .btn-container.btn-container.viewpost button:not(:last-child).active {
+    .btn-container.viewpost button:not(:last-child).active,
+    .btn-container.viewpost .fa-heart.active {
         background-color: transparent;
-        background: linear-gradient(to top right, var(--gradient-color1), var(--gradient-color2), var(--gradient-color3), var(--gradient-color4));
+        background: linear-gradient(to top right, var(--reverse-gradient-color1), var(--reverse-gradient-color2), var(--reverse-gradient-color3), var(--reverse-gradient-color4));
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
@@ -923,11 +934,11 @@
     }
     .btn-container #gif:hover {
         transition: all 200ms ease-in-out;
-        background: linear-gradient(to top right, var(--gradient-color1), var(--gradient-color2), var(--gradient-color3), var(--gradient-color4));
+        background: linear-gradient(to top right, var(--reverse-gradient-color1), var(--reverse-gradient-color2), var(--reverse-gradient-color3), var(--reverse-gradient-color4));
     }
     .btn-container #gif:active{
         transition: all 200ms ease-in-out;
-        background: linear-gradient(to top right, var(--gradient-color1), var(--gradient-color2), var(--gradient-color3), var(--gradient-color4));
+        background: linear-gradient(to top right, var(--reverse-gradient-color1), var(--reverse-gradient-color2), var(--reverse-gradient-color3), var(--reverse-gradient-color4));
     }
 
     .btn-container .outer-btn{
