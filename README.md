@@ -61,6 +61,7 @@
 - Secondly, the initial design of the website was first made by using Figma for prototyping and visualizing how the website would look and function, which at the same time also allows for easy adjustments on the design.
 - Task division was the next step, where the team separated the parts of the website and assigned individual tasks to each member where some handled the log-in screen, the profile, the followers and the like.
 - After dividing each task, the team proceeded in coding the website using JavaScript, CSS and HTML on Visual Studio Code to implement the design and functions made in Figma. Node.js was also used for the development of the site’s API. Lastly, the usage of Netlify to publish the site.
+- Lastly, whenever one is having issues and couldn't resolve it themselves, the team would offer aid to help their member to resolve the issue.
 
 
 ## How did you divide the tasks between the team, and what is the responsibility of each one?
