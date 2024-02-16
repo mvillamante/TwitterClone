@@ -1,90 +1,80 @@
-# Twitter Clone
+# Module 1 Project - Twitter Clone
 
-## Repository Owner
+## How your website accomplished each item in the criteria.
 
-- Each group must assign one repository owner
-- The repository owner must fork this repository. Only the repository owner should fork the repository
-  - This could be done by clicking the "Fork" button on the top right.
-- The repository owner must invite their goupmates as collaborators in their fork
-  - This could be done by going to Settings>Collaborators>Add people
-- The group must use the fork to collaborate on their project. They must commit and push their code in their forks.
-- The group must submit the link of the repository of the repository owner in the submission bin
+### Applications of Concepts Taught
+- We have used HTML for structuring the content of web pages.
+- We have used CSS for styling the layout, color, fonts, and overall visual presentation, and also for animations and transitions to create appealing animations.
+- Used Javascript for adding interactivity, form validation, and animations, providing more dynamic and interactive experiences. We have used this to make requests to fetch data from a server.
+- Created responsive layouts that adapt to different screen sizes and devices.
 
-## Getting Started
 
-Follow these steps to set up and run the Twitter Clone project:
+### Functionality
+- The functionality involves replicating various functionalities from the original platform. Users should be able to register or log in, should be able to post tweets, follow/unfollow users, have a timeline where users can see tweets from users they follow, like or unlike tweets, have a profile page where their tweets are displayed, and log from their account.
 
-1. **Install Node.js**:
-   Make sure you have Node.js installed on your system. If not, download and install it from the official website.
+### Design and Content
 
-2. **Fork and Clone the Repository**:
+- The design resembles Twitter’s familiar interface with navigation, timeline, tweet composer, and user profile.
+- We have used a clean and minimal design focusing on gradients. We have selected fonts that are easy to read and convey a modern, professional look. We have also ensured that the design is responsive, so it adapts smoothly to different screen sizes and devices. 
+- Showcased user-generated content and encouraged interaction through likes, follows/unfollows.
 
-   - Clone your forked repository to your local machine using Git.
+### Code Quality
 
-3. **Install Dependencies**:
+- Implement error handling to handle unexpected situations and provide meaningful error messages to users.
+- Used multiple pages for HTML, CSS, and Javascript files.
+- Use meaningful variable names, function names, and comments to enhance readability and make it easier for the team to understand the code.
 
-   - Open a terminal and navigate to the cloned repository.
-   - Install the API dependencies by running the command:
-     ```
-     npm run init-api
-     ```
-   - Install the UI dependencies by running the command:
-     ```
-     npm run init-ui
-     ```
+### Creativity 
 
-4. **Run the API**:
+- Implemented the light/dark mode theme for them to have customized looks based on where they are at ease.
+- Aligned the theme to the name “Vespera” which evokes twilight or dusk
 
-   - Start the API server by running:
-     ```
-     npm run start-api
-     ```
-   - Visit `http://localhost:3000/api` in your web browser to check if the API is up and running.
-   - Visit `http://localhost:3000/api/docs` in your web browser to see the documentation of the API.
+### Deployment
 
-5. **Run the UI**:
+- Set up the repository in GitHub 
+- Set up Netlify for deployment and placed environment variables
 
-   - Open a new terminal window (keep the API terminal running).
-   - Start the UI development server with:
-     ```
-     npm run start-ui
-     ```
-   - Visit `http://127.0.0.1:8080` in your web browser to see if the UI is working.
+## Where could the concepts discussed in class be seen in your website?
 
-6. **Start Developing**:
-   - Begin working on the UI in the `TwitterCloneUi` folder.
-   - Add your HTML, CSS, and JS files to build the Twitter Clone interface.
+- The concepts that were discussed during class were present in various parts of the website. It may be at the loading/login page, home page, and profile page since we were able to create and design the website with the usage of HTML codes, different kinds of CSS designs, animations, transitions and media queries. Lastly, the usage of JavaScript and API also helped us in enabling the website’s functionality.
 
-Remember: **Do not modify the `TwitterCloneApi` folder**; it contains essential API code.
+## What was your inspiration for the design of the website?
 
-## Deployment
+- The name “Vespera”, derived from ‘vesper’ meaning ‘evening star’, sets the tone for the website’s design. Just as the evening sky transitions from vibrant hues to deep, serene colors as the sun sets, the gradient colors used in the design evoke a similar sense of transition and beauty. 
 
-To deploy this application you need to to use netlify. See the [documentation](https://docs.netlify.com/) to see how deployments are done in Netlify.
+## What was your approach in creating the content of the website?
 
-The netlify.toml file contains nearly all the necessary values needed for deploying the application. There are no additional values needed to be set up except the JWT_KEY environment variable
+- Since the project is about cloning twitter, we first checked the features and design of twitter and got insights on what could be potentially useful for our site.  We then proceed to search more on the web about “aesthetic” designs and colors that tend to be more appealing and popular for younger generations which would later become the theme for our web. Furthermore, we looked for youtube videos in terms of web creating and designing as guides in building its coding foundation. To add, everything was agreed upon by each member and made sure that everyone is on the same page. Lastly, we also created some assets like the logo and user icon for the website.
 
-## Step by step Deployment Guide
+## How is your website creative?
 
-The deployment process for netlify should be straight forward, but here's a step by step guide in case you need it.
+- Our website demonstrates creativity through its thematic elements inspired by the evening sky and the concept of the evening star, "vesper," while also showcasing innovative user experience design featuring interactive elements, intuitive navigation, and engaging content presentation.
+- The use of gradient represents a moment in time, capturing the essence of dusk and the beginning of a new phase. Just as the evening star heralds the onset of a new night, Vespera symbolizes a fresh beginning and the promise of renewal. 
 
-1. Make sure that your forked is synced
-2. Visit [the netlify website](https://netlify.app/) and click on "Deploy to Netlify"
-3. Create an account and sign up with your github profile
-4. Click on the "Add new site" button and select "Import and Exisitng Project"
-5. Click on "Deploy with Github". Netlify might ask for Authentication in which case you would need to allow Netlify.
-6. Select your repository from the list.
-7. Set the site name to your desired name.
-8. The `Build command`, `Publish directory`, and `Functions directory` should be prefilled with the necessary information. If not, make sure to sync your fork and check again.
-9. Click on "Deploy" and wait a couple of minutes for netlify to deploy your application. Once netlify is finished, a green tag with the text "Published" should appear in "Production Deploys"
-10. Et voila, you have deployed your application 🎉 Now you need to step up the JWT_KEY
+## What did you use to deploy your website?
 
-### Setting up the JWT_KEY
+- We have utilized Netlify for deploying our website, allowing for easy integration and fast access to the website. It became a crucial tool for us to simplify the deployment process and enable us to focus on delivering high-quality content for our website.
 
-The JWT_KEY is used to generate the tokens and make sure that the tokens generated by the system is indeed generated by the system itself. Otherwise, attackers might be able to generate tokens themselves and compromise the system. This is why the key needs to be generated and entered manually. They must not be known to anyone but the developers.
+## How you worked as a team to accomplish the project
 
-1. To setup the JWT_KEY environment variable, you would first need to generate a secret key. You may refer to [this](https://dev.to/tkirwa/generate-a-random-jwt-secret-key-39j4) tutorial for generating a secret key
-   - Once generated, your private key may look something like this `ddcb75b4f402f240234eec4bf175fa9e8c15aea5...`
-2. Once you have created a secret key, you need to add your private key as an environment variable. The name of the key must be `JWT_KEY` and the value is your private key.
-   - You may refer to [this](https://docs.netlify.com/environment-variables/get-started/#site-environment-variables) documentation for a tutorial on how to set environment variables in netlify
+- The group first created their own MS team’s group for their group meetings where they would later discuss the project’s progress, tasks and accomplishments. 
+- Secondly, the initial design of the website was first made by using Figma for prototyping and visualizing how the website would look and function, which at the same time also allows for easy adjustments on the design.
+- Task division was the next step, where the team separated the parts of the website and assigned individual tasks to each member where some handled the log-in screen, the profile, the followers and the like.
+- After dividing each task, the team proceeded in coding the website using JavaScript, CSS and HTML on Visual Studio Code to implement the design and functions made in Figma. Node.js was also used for the development of the site’s API. Lastly, the usage of Netlify to publish the site.
 
-Happy coding! 🚀🐦
+
+## How did you divide the tasks between the team, and what is the responsibility of each one?
+
+- The group took a collaborative approach, ensuring tasks were divided fairly among its members. The group wanted to divide the tasks regarding the needs of the project. Noela Andosay led the charge on page layout, creating the main feed layout and overall coordination of the components. Michaella Villamante took charge of user registration and login, seamlessly weaving transitions between the two. Wilbert Laiño took charge of the profile page, lending a hand with API integration when needed. Homer Infante was assigned to make the timeline and following features, also taking the lead in main API integration. Arvin Antonio tackled responsiveness, breakpoints, and CSS media queries. Throughout the project, we maintained a sense of support and collaborativeness, lending a hand whenever possible and sharing ideas freely. This approach ensured everyone gained a well-rounded experience across tasks and enjoyed the whole project.
+
+## How did you prevent your changes in code from conflicting with each other?
+
+- The codes were all separated in their own function especially for displaying for home and profile pages so as to not have conflicts. It was set up like that so that it would have its own independent function instead of mixing both in one for simplicity and to be less confusing.  Moreover, we would notify each other on who would publish first and who would go last, in order for the commits in the code in github not to conflict with each other.
+
+## How you could improve your website in the future
+
+- I do think that more options would be appreciated especially for the functionality of Trends and also other features that would be present in Twitter. However, since it is just a project so as to get familiar with the class, it was sufficient and enjoyable just making the website and applying their functionalities. 
+
+## Other thoughts that might be noteworthy
+
+- Before, the solution/information given prior to the task was lacking and because of it Homer Infante had to come up with a way for the API for the registered users, and was only later on published sir Job's solution in regards to the problem. Which could have made our coding faster and more secure because it had better validations.
