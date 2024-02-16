@@ -178,7 +178,6 @@ async function ToggleLikePost(ID, Likers) {
 
         console.log(`Post ${isLiked ? 'unliked' : 'liked'} successfully!`);
 
-
         await displayUserAndFollowingPosts();
         await displayUserPosts();
 
@@ -187,10 +186,9 @@ async function ToggleLikePost(ID, Likers) {
     }
 }
 
-
 /* -------------Display Users in Follow------------- */
 async function displayUsers() {
-    const usersContainer = document.querySelector('.tofollow-user');
+    const usersContainer = document.querySelector('.tofollow-header');
     usersContainer.innerHTML = ""; // Clear previous content
     console.log("I was called")
     try {
@@ -203,24 +201,26 @@ async function displayUsers() {
         for (const username in allUsernames) {
             if (allUsernames.hasOwnProperty(username)) {
                 const user = allUsernames[username];
-                usersContainer.innerHTML += `
-                <div class="user-container">
-                    <img src="img/user-icon-black.png" id="user-img" class="user-follow-pfp">
-                    <div class="user-name">${user.username}</div>
-                    <div class="buttons-container">
-                        <button class="follow-button" onclick="followUser('${user.username}')">Follow</button>
-                        <button class="unfollow-button" onclick="unfollowUser('${user.username}')">Unfollow</button>
+                if(user.username !== currentUser){
+                    usersContainer.innerHTML += `
+                    <div class="user-container">
+                        <img src="img/user-icon-black.png" id="user-img" class="user-follow-pfp">
+                        <div class="user-name">${user.username}</div>
+                        <div class="buttons-container">
+                            <button class="${following.includes(user.username) ? 'follow-button' : 'unfollow-button'}" 
+                                onclick="${following.includes(user.username) ? 'unfollowUser' : 'followUser'}('${user.username}')">
+                                ${following.includes(user.username) ? 'Unfollow' : 'Follow'}
+                                </button>
+                        </div>
                     </div>
-                </div>
-                `;
+                    `;
+                }
             };
         };
-            
     } catch (error) {
         console.error('Error fetching or parsing JSON data:', error);
     }
 }
-
 
 /* -------------Following Section------------- */
 async function followUser(toFollow) {
@@ -435,7 +435,7 @@ async function displayUserAndFollowingPosts() {
                 <div class="btn-container viewpost">
                     <button class="btn" data-active="false"><i class="fa fa-comment" aria-hidden="true"></i></button>
                     <button class="btn" data-active="false"><i class="fa fa-retweet" aria-hidden="true"></i></button>
-                    <button class="btn" data-active="false">
+                    <button class="btn ${post.likes.includes(currentUser) ? 'active' : 'false'}" data-active="${post.likes.includes(currentUser) ? 'active' : 'false'}">
                         <i class="fa fa-heart" aria-hidden="true" onclick="ToggleLikePost('${post.postId}', '${post.likes}')"> ${post.likes.length}</i>
                     </button>
                     <button class="btn" data-active="false"><i class="fa fa-share-alt" aria-hidden="true"></i></button>
@@ -444,9 +444,8 @@ async function displayUserAndFollowingPosts() {
             </div>
         `).join('');
         console.log("Display Post was successful");
-
-        registerButtonEventListeners();
         await displayUsers();
+        registerButtonEventListeners();
     } catch (error) {
         console.error('Error fetching posts:', error);
     }
@@ -527,9 +526,8 @@ async function displayUserPosts() {
             <div class="btn-container viewpost">
                 <button class="btn" data-active="false"><i class="fa fa-comment" aria-hidden="true"></i></button>
                 <button class="btn" data-active="false"><i class="fa fa-retweet" aria-hidden="true"></i></button>
-                <button class="btn" data-active="false">
+                <button class="btn ${post.likes.includes(currentUser) ? 'active' : 'false'}" data-active="${post.likes.includes(currentUser) ? 'active' : 'false'}">
                     <i class="fa fa-heart" aria-hidden="true" onclick="ToggleLikePost('${post.postId}', '${post.likes}')"> ${post.likes.length}</i>
-                    
                 </button>
                 <button class="btn" data-active="false"><i class="fa fa-share-alt" aria-hidden="true"></i></button>
                 <button class="btn" data-active="false"></button>
