@@ -385,8 +385,8 @@
         top: -2px;
     }
 
-    .fa-solid{
-        color: var(--eye-color);
+    .fa-solid {
+        color: var(--color-lighter-white);
         margin-left: 15rem;
         cursor: pointer;
         top: 0;
