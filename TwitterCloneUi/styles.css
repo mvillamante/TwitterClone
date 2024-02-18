@@ -299,7 +299,7 @@
     }
 
     .fa-solid {
-        color: var(--popbkg);
+        color: var(--poptxt);
     }
 
     form.sign-up-form {
