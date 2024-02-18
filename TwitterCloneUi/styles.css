@@ -36,6 +36,8 @@
     --bullets-hover-color: #fff;
     --bullets-active-color: #151111;
 
+    --eye-color: #151111;
+
     /*---------- Navigation ----------*/
     --navbar-blur-bgcolor: rgba(255, 255, 255, 0.24);
     --bgcolor-1: #f4f3ee; 
@@ -104,6 +106,7 @@
     --navbar-blur-bgcolor: rgba(0, 0, 0, 0.24);
     --bgcolor-1: #151111;
     --bgcolor-2: #f4f3ee;
+    --eye-color: #f4f3ee;
 
     /*---------- Timeline ----------*/
     --timeline-container-color: #3C3535;
@@ -293,9 +296,6 @@
         grid-row: 1 / 2;
         transition: opacity 0.02s 0.4s;
     }
-    .fa-solid {
-        color: var(--popbkg);
-    }
 
     form.sign-up-form {
         opacity: 0;
@@ -386,7 +386,7 @@
     }
 
     .fa-solid{
-        color: var(--poptxt);
+        color: var(--eye-color);
         margin-left: 15rem;
         cursor: pointer;
         top: 0;
