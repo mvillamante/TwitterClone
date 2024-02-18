@@ -465,6 +465,22 @@ function checkProfileMainDisplay() {
     }
 }
 
+//Swtiches main to side viceversa
+function switching()
+{
+    var main = document.querySelector(".homepage-main");
+    var side = document.querySelector(".sidecontent-container");
+
+    if (side.style.display == "none") {
+        side.style.display = "block";
+        main.style.display = "none";console.log("work1");
+    } 
+    else if (main.style.display = "none"){
+        main.style.display = "block";
+        side.style.display = "none";console.log("work2");
+    }
+};
+
 async function displayUserPosts() {
     const userPostContainer = document.querySelector('.profile-main');
     userPostContainer.innerHTML = `

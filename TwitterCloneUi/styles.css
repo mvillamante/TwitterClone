@@ -814,6 +814,7 @@
         bottom: 8.9rem;
         box-shadow: 2px 4px 20px rgba(161, 154, 154, 0.3);
         transition: all 500ms ease;
+        z-index: 100;
     }
     .user-popup.active {
         display: block;
@@ -841,6 +842,10 @@
         font-size: 24px;
         padding-top: .5rem;
         padding-bottom: .5rem;
+        display: none;
+    }
+
+    .switch-btn{
         display: none;
     }
 /*=============== HOMEPAGE ==============*/
@@ -878,6 +883,9 @@
         gap: 0.5rem;
         margin: 8px auto auto 8px;
         transition: all 200ms ease;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
     }
     .btn-container.viewpost{
         gap: 5rem;
@@ -953,6 +961,14 @@
         height: 30px;
         width: 80px;
         top: unset;
+    }
+
+    .pencilbtn {
+        flex-basis: 100%;
+    }
+    .btn-container-post {
+        display: flex;
+        justify-content: flex-end;
     }
 
     .content-container {
@@ -1257,6 +1273,7 @@
         text-decoration: none;
         font-weight: 500;
         color: var(--fontcolor-2);
+        display: inline-block;
     }
 
     .trend-content li p{
@@ -1626,7 +1643,7 @@
     }
 
     @media (max-width: 540px) {
-        main {
+        .homepage-main {
             padding: 0.5rem;
         }
         
@@ -1657,15 +1674,22 @@
         }
 
         /*------------- CONTENT PAGE -------------*/
+        .sidecontent-container{
+            display: none;
+            padding: 0.5rem;
+        }
+
+        .switch-btn{
+            display: block;
+        }
+        
         .home-container{
             width: 100%;
             margin: 0 auto;
             gap: 1px;
             grid-template-columns: 4.5rem auto; 
         }
-        .sidecontent-container{
-            display: none;
-        }
+
         .btn-container{
             gap: 0.2rem;
             display: flex;
