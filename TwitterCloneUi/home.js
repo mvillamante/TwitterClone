@@ -19,12 +19,14 @@ async function activeLink() {
         await updateFollowingCount();
         await getFollowing();
         await loadFollowerCount();
+        checkProfileMainDisplay();
     }
     else if (this === navlist[0]) { 
         timelineSection.style.display = 'block';
         await displayUserAndFollowingPosts();
         await getFollowing();
         await loadFollowerCount();
+        checkProfileMainDisplay();
     }
 
 }
@@ -42,17 +44,21 @@ navUser.onclick = function(){
     showTriangle.classList.toggle('active')
 }
 
-//interactive button container
+// Interactive button container
 let viewpost = document.querySelector('.btn-container.viewpost');
 
-viewpost.addEventListener('click', function() {
+viewpost.addEventListener('click', function(event) {
     viewpost.classList.toggle('active');
-    if (viewpost.classList.contains('active')) {
-        viewpost.style.pointerEvents = 'none';
-    } else {
-        viewpost.style.pointerEvents = 'auto'; 
+
+    if (!event.target.classList.contains('fa-heart')) {
+        if (viewpost.classList.contains('active')) {
+            viewpost.style.pointerEvents = 'none';
+        } else {
+            viewpost.style.pointerEvents = 'auto'; 
+        }
     }
 });
+
 
 // For Trends
 // script when icon down/up is clicked
@@ -106,20 +112,16 @@ ekisBtn.forEach(button => {
     });
 });
 
-const buttons = document.querySelectorAll('.btn-container.viewpost .btn');
-
-buttons.forEach((button) => {
-  button.addEventListener('click', () => {
-    if (button.dataset.active === 'false') {
-      button.dataset.active = 'true';
-      button.classList.add('active');
-    } else {
-      button.dataset.active = 'false';
-      button.classList.remove('active');
-    }
-  });
-});
-
+function registerButtonEventListeners() {
+    const buttons = document.querySelectorAll('.btn-container.viewpost .btn');
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            // Toggle the active state of the clicked button
+            button.dataset.active = button.dataset.active === 'false' ? 'true' : 'false';
+            button.classList.toggle('active');
+        });
+    });
+}
 
 //check input
 function checkInput() {
@@ -175,8 +177,10 @@ async function ToggleLikePost(ID, Likers) {
         }
 
         console.log(`Post ${isLiked ? 'unliked' : 'liked'} successfully!`);
+
         await displayUserAndFollowingPosts();
         await displayUserPosts();
+
     } catch (error) {
         console.error(`Error ${isLiked ? 'unliking' : 'liking'} post:`, error);
     }
@@ -184,7 +188,7 @@ async function ToggleLikePost(ID, Likers) {
 
 /* -------------Display Users in Follow------------- */
 async function displayUsers() {
-    const usersContainer = document.querySelector('.tofollow-user');
+    const usersContainer = document.querySelector('.tofollow-users');
     usersContainer.innerHTML = ""; // Clear previous content
     console.log("I was called")
     try {
@@ -197,24 +201,26 @@ async function displayUsers() {
         for (const username in allUsernames) {
             if (allUsernames.hasOwnProperty(username)) {
                 const user = allUsernames[username];
-                usersContainer.innerHTML += `
-                <div class="user-container">
-                    <img src="img/user-icon-black.png" id="user-img" class="user-follow-pfp">
-                    <div class="user-name">${user.username}</div>
-                    <div class="buttons-container">
-                        <button class="follow-button" onclick="followUser('${user.username}')">Follow</button>
-                        <button class="unfollow-button" onclick="unfollowUser('${user.username}')">Unfollow</button>
+                if(user.username !== currentUser){
+                    usersContainer.innerHTML += `
+                    <div class="user-container">
+                        <img src="img/user-icon-black.png" id="user-img" class="user-follow-pfp">
+                        <div class="user-name">${user.username}</div>
+                        <div class="buttons-container">
+                            <button class="${following.includes(user.username) ? 'follow-button' : 'unfollow-button'}" 
+                                onclick="${following.includes(user.username) ? 'unfollowUser' : 'followUser'}('${user.username}')">
+                                ${following.includes(user.username) ? 'Unfollow' : 'Follow'}
+                                </button>
+                        </div>
                     </div>
-                </div>
-                `;
+                    `;
+                }
             };
         };
-            
     } catch (error) {
         console.error('Error fetching or parsing JSON data:', error);
     }
 }
-
 
 /* -------------Following Section------------- */
 async function followUser(toFollow) {
@@ -414,13 +420,15 @@ async function displayUserAndFollowingPosts() {
         //   });
 
         posts.sort((a, b) => new Date(b.dateTimePosted) - new Date(a.dateTimePosted));
+        
         postsContainer.innerHTML += posts.map(post => `
             <div class="post-container">
                 <div class="content-post">
                     <div class="post-header">
                         <img src="img/user-icon-black.png" id="userphoto-img">
                         <span id="username">${post.postedBy}</span>
-                        <span class="post-time">${post.dateTimePosted}</span>
+                        <span class="post-time">${new Date(post.dateTimePosted).toLocaleString()}
+                    </span>
                     </div>
                     <div class="post-text">
                         ${post.content}
@@ -429,7 +437,7 @@ async function displayUserAndFollowingPosts() {
                 <div class="btn-container viewpost">
                     <button class="btn" data-active="false"><i class="fa fa-comment" aria-hidden="true"></i></button>
                     <button class="btn" data-active="false"><i class="fa fa-retweet" aria-hidden="true"></i></button>
-                    <button class="btn" data-active="false">
+                    <button class="btn ${post.likes.includes(currentUser) ? 'active' : 'false'}" data-active="${post.likes.includes(currentUser) ? 'active' : 'false'}">
                         <i class="fa fa-heart" aria-hidden="true" onclick="ToggleLikePost('${post.postId}', '${post.likes}')"> ${post.likes.length}</i>
                     </button>
                     <button class="btn" data-active="false"><i class="fa fa-share-alt" aria-hidden="true"></i></button>
@@ -437,10 +445,23 @@ async function displayUserAndFollowingPosts() {
                 </div>
             </div>
         `).join('');
+
         console.log("Display Post was successful");
         await displayUsers();
+        registerButtonEventListeners();
     } catch (error) {
         console.error('Error fetching posts:', error);
+    }
+}
+
+//hides or unhides the post button on navbar 
+function checkProfileMainDisplay() {
+    const navPostButton = document.getElementById('navPost');
+    const userPostContainer = document.querySelector('.profile-main');
+    if (userPostContainer.style.display !== 'none') {
+        navPostButton.style.display = 'none';
+    } else {
+        navPostButton.style.display = 'block';
     }
 }
 
@@ -457,13 +478,14 @@ async function displayUserPosts() {
                 unforgettable memories 🚀</p>
                 <h5><i class="fa fa-calendar"></i> Joined 2024</h5>
             <div class="profile-follows">
-                <h5 id="followingCountPlaceholder"></h5>
-                <h5>Following</h5>
-                <h5 id="followerCountPlaceholder"></h5>
+                <h5 id="followingCountPlaceholder">0</h5>
+                <h5>Following</h5> 
+                <h5 id="followerCountPlaceholder">0</h5>
                 <h5>Followers</h5>
             </div>
         </div>
     `; // Clear previous posts
+
 
     try {
         const res = await fetch(`/api/v1/posts?username=${currentUser}`, {
@@ -498,7 +520,7 @@ async function displayUserPosts() {
                 <div class="post-header">
                     <img src="img/user-icon-black.png" id="userphoto-img">
                     <span id="username">${post.postedBy}</span>
-                    <span class="post-time">${post.dateTimePosted}</span>
+                    <span class="post-time">${new Date(post.dateTimePosted).toLocaleString()}</span>
                 </div>
                 <div class="post-text">
                     ${post.content}
@@ -507,9 +529,8 @@ async function displayUserPosts() {
             <div class="btn-container viewpost">
                 <button class="btn" data-active="false"><i class="fa fa-comment" aria-hidden="true"></i></button>
                 <button class="btn" data-active="false"><i class="fa fa-retweet" aria-hidden="true"></i></button>
-                <button class="btn" data-active="false">
+                <button class="btn ${post.likes.includes(currentUser) ? 'active' : 'false'}" data-active="${post.likes.includes(currentUser) ? 'active' : 'false'}">
                     <i class="fa fa-heart" aria-hidden="true" onclick="ToggleLikePost('${post.postId}', '${post.likes}')"> ${post.likes.length}</i>
-                    
                 </button>
                 <button class="btn" data-active="false"><i class="fa fa-share-alt" aria-hidden="true"></i></button>
                 <button class="btn" data-active="false"></button>
@@ -517,7 +538,9 @@ async function displayUserPosts() {
         </div>
         `).join('');
 
+        registerButtonEventListeners();
         await displayUsers();
+
     } catch (error) {
         console.error('Error fetching all following posts:', error);
     }
