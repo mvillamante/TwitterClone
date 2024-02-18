@@ -81,7 +81,7 @@ function register() {
 async function registerApi(data) {
     event.preventDefault();
     try {
-        const res = await fetch('http://localhost:3000/api/v1/auth/register', {
+        const res = await fetch('/api/v1/auth/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -117,7 +117,7 @@ function login() {
 //login API function
 async function loginApi(data) {
     try {
-        const res = await fetch("http://localhost:3000/api/v1/auth/login", {
+        const res = await fetch("/api/v1/auth/login", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'

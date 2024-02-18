@@ -781,12 +781,14 @@
     }
 
     .nav-usertxt h4 {
+        color: var(--poptxt);
         display: flex;
         white-space: nowrap;
         margin: 0;
     }
 
     .nav-user i {
+        color: var(--poptxt);
         margin-left: 8px;
         font-size: 18px;
     }

@@ -159,7 +159,7 @@ async function ToggleLikePost(ID, Likers) {
         // Assuming currentUser is the username of the logged-in user
         let isLiked = Likers.includes(currentUser);
 
-        const response = await fetch(`http://localhost:3000/api/v1/posts/${ID}`, {
+        const response = await fetch(`/api/v1/posts/${ID}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -189,7 +189,7 @@ async function displayUsers() {
     console.log("I was called")
     try {
         // Fetch JSON data asynchronously
-        const res = await fetch("http://localhost:3000/api/allUsers");
+        const res = await fetch("/api/allUsers");
         const allUsernames = await res.json();
         console.log("Full Response:", allUsernames); // for debugging
 
@@ -222,7 +222,7 @@ async function followUser(toFollow) {
         console.log("Already Following or cannot be followed");
     }else{
         try {
-            const res = await fetch(`http://localhost:3000/api/v1/users/${currentUser}/following/${toFollow}`, {
+            const res = await fetch(`/api/v1/users/${currentUser}/following/${toFollow}`, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
@@ -252,7 +252,7 @@ async function unfollowUser(toUnfollow) {
         console.log("Already unFollowed");
     }else{
         try {
-            const res = await fetch(`http://localhost:3000/api/v1/users/${currentUser}/following/${toUnfollow}`, {
+            const res = await fetch(`/api/v1/users/${currentUser}/following/${toUnfollow}`, {
             method: "DELETE",
             headers: {
                 'Content-Type': 'application/json',
@@ -281,7 +281,7 @@ async function unfollowUser(toUnfollow) {
 async function getFollowing() {
     console.log("Getting Following");
     try {
-        const response = await fetch(`http://localhost:3000/api/v1/users/${currentUser}/following`, {
+        const response = await fetch(`/api/v1/users/${currentUser}/following`, {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${currentToken}`
@@ -320,7 +320,7 @@ loadFollowingCount();
 //loads and updates follower count
 async function loadFollowerCount(){
     follower = [];
-    const res = await fetch("http://localhost:3000/api/allUsers");
+    const res = await fetch("/api/allUsers");
     const allUsernames = await res.json();
 
     for (const username in allUsernames){
@@ -341,7 +341,7 @@ async function loadFollowerCount(){
 async function NewPost() {
     var getNewPost = document.getElementById('userPost').value;
     try {
-        const res = await fetch("http://localhost:3000/api/v1/posts", {
+        const res = await fetch("/api/v1/posts", {
             method: "POST",
             headers: {
                 'Authorization': `Bearer ${currentToken}`,
@@ -390,7 +390,7 @@ async function displayUserAndFollowingPosts() {
     `;
 
     try {
-        const res = await fetch("http://localhost:3000/api/v1/posts", {
+        const res = await fetch("/api/v1/posts", {
             headers: {
                 'Authorization': `Bearer ${currentToken}`
             }
@@ -466,7 +466,7 @@ async function displayUserPosts() {
     `; // Clear previous posts
 
     try {
-        const res = await fetch(`http://localhost:3000/api/v1/posts?username=${currentUser}`, {
+        const res = await fetch(`/api/v1/posts?username=${currentUser}`, {
             headers: {
                 'Authorization': `Bearer ${currentToken}`
             }
