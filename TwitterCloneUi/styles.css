@@ -1620,7 +1620,7 @@
         }
     }
 
-    @media (max-width: 530px) {
+    @media (min-width: 350px) {
         main {
             padding: 0.5rem;
         }
@@ -1633,7 +1633,7 @@
             padding: 0.5rem;
         }
         .fa-solid {
-            margin-left: 18rem;
+            margin-left: 14rem;
         }
         .carousel {
             padding: 1.5rem 1rem;
