@@ -1553,6 +1553,10 @@
         }
     }
 
+    .fa-solid {
+        margin-right: 20rem;
+    }
+
 
     @media (max-width: 600px) {
     /*------------- LOADING PAGE -------------*/
@@ -1569,7 +1573,7 @@
         }
 
         .fa-solid {
-            margin-left: 18rem;
+            margin-right: 8rem;
         }
 
         .carousel {
@@ -1613,5 +1617,37 @@
             margin-top: -4rem;
             width: 100px;
             height: auto;
+        }
+    }
+
+    @media (max-width: 530px) {
+        main {
+            padding: 0.5rem;
+        }
+        
+        .box {
+            border-radius: 1rem;
+        }
+
+        .inner-box {
+            padding: 0.5rem;
+        }
+        .fa-solid {
+            margin-left: 18rem;
+        }
+        .carousel {
+            padding: 1.5rem 1rem;
+            border-radius: 1.6rem;
+        }
+
+        .text-wrap {
+            margin-bottom: 1rem;
+        }
+
+        .text-group h2 {
+            font-size: 0.8rem;
+        }
+        form {
+            padding: 0.5rem 1rem 1rem
         }
     }
