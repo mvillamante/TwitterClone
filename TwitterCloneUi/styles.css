@@ -386,7 +386,7 @@
     }
 
     .fa-solid {
-        color: var(--color-lighter-white);
+        color: var(--eye-color);
         margin-left: 15rem;
         cursor: pointer;
         top: 0;
