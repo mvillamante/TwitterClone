@@ -269,10 +269,6 @@
         transform: translate(-50%, -50%);
     }
 
-    .fa-solid {
-        color: var(--popbkg);
-    }
-
     .forms-wrap {
         position: absolute;
         height: 100%;
@@ -297,9 +293,8 @@
         grid-row: 1 / 2;
         transition: opacity 0.02s 0.4s;
     }
-
     .fa-solid {
-        color: var(--poptxt);
+        color: var(--popbkg);
     }
 
     form.sign-up-form {
@@ -391,6 +386,7 @@
     }
 
     .fa-solid{
+        color: var(--poptxt);
         margin-left: 15rem;
         cursor: pointer;
         top: 0;
