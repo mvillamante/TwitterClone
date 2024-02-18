@@ -269,6 +269,10 @@
         transform: translate(-50%, -50%);
     }
 
+    .fa-solid {
+        color: var(--popbkg);
+    }
+
     .forms-wrap {
         position: absolute;
         height: 100%;
@@ -295,7 +299,7 @@
     }
 
     .fa-solid {
-        color: #f4f3ee;
+        color: var(--popbkg);
     }
 
     form.sign-up-form {
