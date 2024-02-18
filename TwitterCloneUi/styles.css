@@ -294,6 +294,10 @@
         transition: opacity 0.02s 0.4s;
     }
 
+    .fa-solid {
+        color: #f4f3ee;
+    }
+
     form.sign-up-form {
         opacity: 0;
         pointer-events: none;
